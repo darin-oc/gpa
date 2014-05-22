@@ -1,6 +1,5 @@
-gpa
-===
 GPA Comparison Calculator
+===
 
 The Board of Undergraduate Studies introduces a revised Grade Point Average (GPA) effective Semester I 2014/2015. Visit the http://www.uwi.edu/undergraduatestudies/gpascheme.aspx page to learn about the changes and the benefits.
 
