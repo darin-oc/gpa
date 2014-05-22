@@ -138,7 +138,7 @@ tr.num td {
   width:65px;
 }
 
-.panel-heading:hover {
+.formula:hover {
   background-color: #d0e9c6 !important;
   cursor: pointer;
 }

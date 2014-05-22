@@ -179,7 +179,7 @@
                 </td>
               </tr>
               <tr class="active">
-                <td class="text-success">
+                <td ng-class="theme.alert">
                   <strong>GPA Converted to 2014/15 Scheme:</strong>
                 </td>
               </tr>
@@ -195,7 +195,7 @@
                 </td>
               </tr>
               <tr>
-                <td class="text-success">
+                <td ng-class="theme.alert">
                   {{convertedGpa | number:2}}
                 </td>
               </tr>
@@ -211,7 +211,7 @@
                 </td>
               </tr>
               <tr>
-                <td class="text-success">
+                <td ng-class="theme.alert">
                   {{newGpa | number:2}}
                 </td>
               </tr>
@@ -222,66 +222,71 @@
     </div>
   </div>
 
-  <br><br>
+  <br>
 
   <div class="row">
-    <div class="col-md-2"></div>
+    <div class="col-md-4"></div>
     <div class="col-md-8">
       <div class="row" id="comparison">
         <div class="col-md-6">
-          <label>Description</label>
-          <table class="table table-bordered table-condensed gridform gridsummary">
-            <tbody>
-              <tr class="active">
-                <td>
-                  <strong>Combined Cumulative GPA:</strong>
-                </td>
-              </tr>
-              <tr class="active">
-                <td>
-                  <strong>Degree GPA:</strong>
-                </td>
-              </tr>
-              <tr class="active">
-                <td>
-                  <strong>Honours:</strong>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="panel" ng-class="theme.panel">
+            <div class="panel-heading">
+              <h4 class="panel-title">Computation</h4>
+            </div>
+            <table class="table table-bordered table-condensed gridform gridsummary">
+              <tbody>
+                <tr class="active">
+                  <td>
+                    <strong>Combined Cumulative GPA:</strong>
+                  </td>
+                </tr>
+                <tr class="active">
+                  <td>
+                    <strong>Combined Degree GPA:</strong>
+                  </td>
+                </tr>
+                <tr class="active">
+                  <td>
+                    <strong>Class of Degree:</strong>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="col-md-6">
-          <label>Results</label>
-          <table id="gpa2results" class="table table-bordered table-condensed gridform">
-            <tbody>
-              <tr>
-                <td>
-                  {{combinedCumulativeGpa | number:2}}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  {{combinedWeightedGpa | number:2}}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  {{newGpaDegreeClass}}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="panel" ng-class="theme.panel">
+            <div class="panel-heading">
+              <h4 class="panel-title">Results</h4>
+            </div>
+            <table id="gpa2results" class="table table-bordered table-condensed gridform">
+              <tbody>
+                <tr>
+                  <td>
+                    {{combinedCumulativeGpa | number:2}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {{combinedWeightedGpa | number:2}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {{newGpaDegreeClass}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-2"></div>
   </div>
 
-  <!-- <hr> -->
-
   <div class="panel-group well">
-    <div class="panel panel-default panel-success">
-      <div class="panel-heading" ng-click="combinedCumulativeFormulaIsCollapsed = !combinedCumulativeFormulaIsCollapsed">
+    <div class="panel panel-success">
+      <div class="panel-heading formula" ng-click="combinedCumulativeFormulaIsCollapsed = !combinedCumulativeFormulaIsCollapsed">
         <h4 class="panel-title">
             Combined Cumulative GPA Formula
         </h4>
@@ -325,8 +330,8 @@
         </div>
       </div>
     </div>
-    <div class="panel panel-default panel-success">
-      <div class="panel-heading" ng-click="combinedDegreeFormulaIsCollapsed = !combinedDegreeFormulaIsCollapsed">
+    <div class="panel panel-success">
+      <div class="panel-heading formula" ng-click="combinedDegreeFormulaIsCollapsed = !combinedDegreeFormulaIsCollapsed">
         <h4 class="panel-title">
             Combined Degree GPA Formula
         </h4>
