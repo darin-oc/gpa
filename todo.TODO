@@ -1,0 +1,41 @@
+GPA Comparision Calculator:
+  ✔ Include a 'Programme' selection. @difficulty-easy @done (13-12-08 13:35)
+  ✔ Fix the GPA 1 'Honours' as it should use the current honours assignment @difficulty-easy @done (13-12-09 02:49)
+  ✔ Fix bug where Degree Honours is not displayed sometimes. Calculation might be coming back as NULL @difficulty-easy @done (14-01-07 09:50)
+  ✔ Verify the Degree Honours ranges in #classOfHonsDegree.js @difficulty-easy @done (14-01-16 14:33)
+  ✔ Get the 'Calculate my GPA' and 'Show me what to do' links working @difficulty-easy @done (14-01-16 14:32)
+  ✔ Remove <input> from the results @difficulty-easy @done (14-01-24 11:19)
+  ✔ Set up REST services to pull in courses depending on campus @difficulty-easy @done (14-01-24 13:27)
+  ✔ In weights.js determine weights for each campus' faculties @difficulty-easy @done (14-02-01 22:42)
+  ✔ Fix bug when 'Select a Campus' and 'Select a Faculty' are selected @difficulty-easy @done (14-01-24 18:28)
+    --- ✄ -----------------------
+  ✔ Separate the code into the correct controls, views and other files @difficulty-medium @done (13-12-08 11:29)
+  ✔ Get all UWI courses and put into #courses.js @difficulty-medium @done (14-01-24 13:28)
+  ✔ Harden the input data validation @difficulty-medium @done (13-12-08 21:34)
+  ✔ Change alerts to tasteful inline error messages @difficulty-medium @done (14-01-07 02:56)
+  ✔ Make the 'Campus' selection set what faculties are shown @difficulty-medium @done (13-12-08 23:39)
+  ✔ Set up the logic for 'Weighted GPA' @difficulty-medium @done (14-01-24 15:43)
+  ✔ Get the student's programme 'Standing' row to work @difficulty-medium @done (14-01-07 09:26)
+  ✔ Add a switch next to each chosen course in the list to allow it to toggle whether it counts towards the GPA @difficulty-medium @done (14-01-08 16:10)
+  ☐ Include an icon to indicate whether the data was manually inserted or automatically inserted @difficulty-medium
+  ✔ Create a json config file for administrators @difficulty-medium @done (14-01-27 15:24)
+  ✔ Let campus selection change the theme (colour) of the page @difficulty-medium @done (14-01-26 09:55)
+  ✔ Seperate faculties by campuses @difficulty-medium @done (14-01-27 15:23)
+    --- ✄ -----------------------
+  ✔ Make the 'Faculty' selection set the logic of GPA calculation @difficulty-hard @done (14-01-27 17:10)
+  ✔ Set up the REST services to pull in student info and automatically do the calculation @difficulty-hard @done (14-01-09 03:06)
+  ☐ Get search select option for course rows to work @difficulty-hard
+
+--- ✄ -----------------------
+Code was stolen from http://beta.dec.uwi.edu/reiza/gpa/
+
+--- ✄ -----------------------
+Helpful UWI sites:
+  http://www.mona.uwi.edu/programmes/undergrad.php
+  http://myspot.mona.uwi.edu/humed/sites/default/files/humed/u5/FHE%20Handbook%202013-2014%20%28UPDATED%20FINAL%20COPY%29.pdf
+  http://myspot.mona.uwi.edu/fms/sites/default/files/fms/uploads/uwimona-dds%20students%20handbook%20march%202012.pdf
+  http://myspot.mona.uwi.edu/socsci/sites/default/files/socsci/uploads/fssundergraduatehandbook2012-2013final20130809_3.pdf
+  http://www.cavehill.uwi.edu/programmes/undergrad.asp#1
+  http://www.cavehill.uwi.edu/fhe/current-students/grade-point-average.aspx
+  http://www.cavehill.uwi.edu/resources/documents/handbooks/2012_2013/fst/programmes_courses.pdf
+  http://sta.uwi.edu/resources/documents/GPAbooklet.pdf

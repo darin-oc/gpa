@@ -1,0 +1,73 @@
+<!-- <div id="wrap" ng-controller="MainController"> -->
+<div id="wrap">
+  <header class="navbar navbar-inverse navbar-fixed-top" style="border-color:rgb(67,158,36);">
+    <div id="topnav" class="" role="navigation" style="background-color:rgba(0,0,0,0.9552238805970149)">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" style="color:rgb(255,255,255);">GPA Comparison Calculator</a>
+        </div>
+        <div class="navbar-collapse collapse">
+
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron" ng-class="theme.jumbofont" style="background-color:rgb(67,158,36);padding-left:56px;" ng-style="{'background-color':theme.color}">
+    <div class="container" style="padding-top:1em;">
+      <h1>Revised GPA</h1>
+      <p>
+        The Board of Undergraduate Studies introduces a revised Grade Point Average (GPA) effective Semester I 2014/2015. Visit the <a href="http://www.uwi.edu/undergraduatestudies/gpascheme.aspx" target="_blank" class="text-yg" ng-class="theme.font">Introduction of Revised GPA Scheme <i class="fa fa-external-link"></i></a> page to learn about the changes and the benefits.
+      </p>
+      <p>
+        <br>
+        <a class="btn btn-default btn-lg" style="margin-bottom:10px;" role="button" ng-click="gotoCalculator()">
+          <i class="fa fa-bolt"></i>
+          Calculate my GPA
+        </a>
+        <a class="btn btn-success btn-lg" style="margin-bottom:10px;" role="button" id="help">
+          <i class="fa fa-question-circle"></i> Show me what to do ...
+        </a>
+        <a id="calculator"></a>
+
+      </p>
+    </div>
+
+  </div>
+
+  <div id="gpacalculator" class="container">
+    <p id="disclaimer">
+      <strong>Disclaimer:</strong> This GPA calculator is for your information only. Your UWI campus Registrar's Office is the only official entity which may verify and certify grade point averages for degree completion and other program requirements.
+    </p>
+
+    <div ng-switch on="campusView">
+      <div ng-switch-when="default">
+        <div ng-include='"views/allcampuses.html"'></div>
+      </div>
+      <div ng-switch-when="openCampus">
+        <div ng-include='"views/opencampus.html"'></div>
+      </div>
+    </div>
+
+    <div ng-switch on="version">
+      <div ng-switch-when="version1">
+        <div ng-include='"views/version1.html"'></div>
+      </div>
+      <div ng-switch-when="version2">
+        <div ng-include='"views/version2.html"'></div>
+      </div>
+      <div ng-switch-when="version3">
+        <div ng-include='"views/version3.html"'></div>
+      </div>
+    </div>
+
+    <br>
+  </div>
+</div>
+
+<div id="footer">
+  <div class="container">
+    <p class="text-muted credit">© 2013.</p>
+  </div>
+</div>

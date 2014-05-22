@@ -1,0 +1,39 @@
+{
+  "name"                    : "GPA Comparison Calculator",
+  "description"             : "The Board of Undergraduate Studies introduces a revised Grade Point Average (GPA) effective Semester I 2014/2015. Visit the http://www.uwi.edu/undergraduatestudies/gpascheme.aspx page to learn about the changes and the benefits.",
+  "version"                 : "1.0.2",
+  "authors"                 : [
+    {
+      "name"                : "Darin Brathwaite",
+      "email"               : "darin.brathwaite@open.uwi.edu"
+    },
+    {
+      "name"                : "Reiza Haniff",
+      "email"               : "reiza.haniff@open.uwi.edu"
+    }
+  ],
+  "maintainers"             : [
+    {
+      "name"                : "Darin Brathwaite",
+      "email"               : "darin.brathwaite@open.uwi.edu"
+    }
+  ],
+
+  "_comment_defaultCampus"  : "Can be set to null, open, mona, cave or sta",
+  "defaultCampus"           : "open",
+
+  "_comment_dynamicTheme"   : "Set value to true or false",
+  "dynamicTheme"            : true,
+
+  "_comment_defaultFaculty" : "Can be set to null or the shortName of a faculty",
+  "defaultFaculty"          : null,
+
+  "_comment_studentProgrammeRecordURI": "Expects json response. Can be a URI such as 'http://localhost/restfulGpaServer/index.php/gpa_api/token' or a .json file. Otherwise give it an empty string",
+  "studentProgrammeRecordURI": "example.json",
+
+  "_comment_coursesURI"     : "Expects json response. Can be a URI such as 'http://localhost/restfulGpaServer/index.php/gpa_api/token' or a .json file",
+  "coursesURI"              : "courses.json",
+
+  "_comment_design"         : "Set value to design1, design2, design3 or design4",
+  "design"                  : "design3"
+}
