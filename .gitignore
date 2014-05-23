@@ -1,5 +1,4 @@
 node_modules
-dist
 .tmp
 .sass-cache
 app/bower_components1
@@ -9,3 +8,4 @@ app/favicon.ico
 app/gpa.json
 app/gpa1.json
 app/gpa_copy.json
+app/config.json

@@ -8,7 +8,7 @@ angular.module('gpaApp', [
   'ui.bootstrap.tooltip',
   'ui.bootstrap.collapse'
 ])
-  .config(function ($locationProvider, $routeProvider) {
+  .config(function ($locationProvider, $routeProvider, $httpProvider) {
     // $locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
@@ -18,4 +18,8 @@ angular.module('gpaApp', [
       .otherwise({
         redirectTo: '/'
       });
+    //Enable cross domain calls
+    $httpProvider.defaults.useXDomain = true;
+    //Remove the header used to identify ajax call  that would prevent CORS from working
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
   });

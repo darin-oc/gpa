@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="alert alert-success" ng-class="theme.alert">
+      1. Select the options appropriate to your programme
+    </div>
+  </div>
+</div>
+<div class="row programmecell" id="programmecell">
+
+  <!-- <div class="col-md-4"> -->
+  <div class="col-md-6">
+    <div class="row">
+      <div class="form-group col-xs-12">
+        <label for="title">Campus</label>
+        <select id="campus" class="form-control select2" tabindex="-1" ng-model="campus" ng-options="campus.name for campus in campuses" ng-change="campusSelected(campus)">
+          <option value="">Select a Campus</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="col-md-4"> -->
+  <div class="col-md-6">
+    <div class="row">
+      <div class="form-group col-xs-12">
+        <label for="s2id_autogen2">Faculty</label>
+        <select id="faculty" class="form-control select2" tabindex="-1" ng-model="faculty" ng-options="faculty.name for faculty in faculties | orderBy:'name'" ng-change="facultySelected(faculty)">
+              <option value="">Select a Faculty</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="col-md-4">
+    <div class="row">
+      <div class="form-group col-xs-12">
+        <label for="title">Programme</label>
+        <select id="programme" class="form-control select2" tabindex="-1" ng-model="programmes" ng-options="programme.name group by programme.group for programme in programmes | orderBy:'name'">
+          <option value="">Select a Programme</option>
+        </select>
+      </div>
+    </div>
+  </div> -->
+
+</div>
+
+<hr>

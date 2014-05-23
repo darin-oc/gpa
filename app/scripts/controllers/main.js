@@ -255,7 +255,7 @@ angular.module('gpaApp')
       $scope.term = terms.selectedTerm(term);
     };
 
-    $scope.combinedCumulativeFormulaIsCollapsed = false;
+    $scope.combinedCumulativeFormulaIsCollapsed = true;
     $scope.combinedDegreeFormulaIsCollapsed = true;
 
   });
