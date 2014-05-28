@@ -20,12 +20,12 @@ Use the **config.json** file to configure the settings of the app. The instructi
 
 ## How to use the app
 
-1 Select a *campus* and a *faculty* if available
-2 Click on the *Add Course* button to add courses and grades to the list
-3 In the screens that pops up select all the values for a a particular course. The selection will turn green when a valuse i selected
-4 To add another course click the green circle with the plus sign
-5 To delete a course click the red circle with the minus sign
-6 Save the selected courses to add them to the calculator
-7 To remove a course from the calculator click on the red circle with the cross
-8 To Exclude a course from the calculations uncheck the check box to the left of the course
-9 Click on the formula name to understand how the combined GPAs were calculated
+1. Select a *campus* and a *faculty* if available
+2. Click on the *Add Course* button to add courses and grades to the list
+3. In the screens that pops up select all the values for a a particular course. The selection will turn green when a valuse i selected
+4. To add another course click the green circle with the plus sign
+5. To delete a course click the red circle with the minus sign
+6. Save the selected courses to add them to the calculator
+7. To remove a course from the calculator click on the red circle with the cross
+8. To Exclude a course from the calculations uncheck the check box to the left of the course
+9. Click on the formula name to understand how the combined GPAs were calculated
