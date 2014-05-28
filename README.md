@@ -20,8 +20,8 @@ Use the **config.json** file to configure the settings of the app. The instructi
 
 ## How to use the app
 
-1. Select a *campus* and a *faculty* if available
-2. Click on the *Add Course* button to add courses and grades to the list
+1. Select a **Campus** and a **Faculty** if available
+2. Click on the **Add Course** button to add courses and grades to the list
 3. In the screens that pops up select all the values for a a particular course. The selection will turn green when a valuse i selected
 4. To add another course click the green circle with the plus sign
 5. To delete a course click the red circle with the minus sign
