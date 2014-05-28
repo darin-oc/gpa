@@ -8,6 +8,7 @@ GPA Comparision Calculator:
   ✔ Set up REST services to pull in courses depending on campus @difficulty-easy @done (14-01-24 13:27)
   ✔ In weights.js determine weights for each campus' faculties @difficulty-easy @done (14-02-01 22:42)
   ✔ Fix bug when 'Select a Campus' and 'Select a Faculty' are selected @difficulty-easy @done (14-01-24 18:28)
+  ☐ Fix bug in combined degree gpa calculation that gives blank result if there are no prior courses in course row @difficulty-easy
     --- ✄ -----------------------
   ✔ Separate the code into the correct controls, views and other files @difficulty-medium @done (13-12-08 11:29)
   ✔ Get all UWI courses and put into #courses.js @difficulty-medium @done (14-01-24 13:28)
@@ -18,6 +19,7 @@ GPA Comparision Calculator:
   ✔ Get the student's programme 'Standing' row to work @difficulty-medium @done (14-01-07 09:26)
   ✔ Add a switch next to each chosen course in the list to allow it to toggle whether it counts towards the GPA @difficulty-medium @done (14-01-08 16:10)
   ☐ Include an icon to indicate whether the data was manually inserted or automatically inserted @difficulty-medium
+  ☐ Create service that requests user id from server @difficulty-medium
   ✔ Create a json config file for administrators @difficulty-medium @done (14-01-27 15:24)
   ✔ Let campus selection change the theme (colour) of the page @difficulty-medium @done (14-01-26 09:55)
   ✔ Seperate faculties by campuses @difficulty-medium @done (14-01-27 15:23)
@@ -25,9 +27,11 @@ GPA Comparision Calculator:
   ✔ Make the 'Faculty' selection set the logic of GPA calculation @difficulty-hard @done (14-01-27 17:10)
   ✔ Set up the REST services to pull in student info and automatically do the calculation @difficulty-hard @done (14-01-09 03:06)
   ☐ Get search select option for course rows to work @difficulty-hard
+  ☐ Fix UI to improve understanding and usability of the app @difficulty-hard
 
 --- ✄ -----------------------
 Code was stolen from http://beta.dec.uwi.edu/reiza/gpa/
+"studentProgrammeRecordURI": "http://my.open.uwi.edu/rest/sar/",
 
 --- ✄ -----------------------
 Helpful UWI sites:

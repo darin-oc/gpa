@@ -1,7 +1,7 @@
 {
   "name"                    : "GPA Comparison Calculator",
   "description"             : "The Board of Undergraduate Studies introduces a revised Grade Point Average (GPA) effective Semester I 2014/2015. Visit the http://www.uwi.edu/undergraduatestudies/gpascheme.aspx page to learn about the changes and the benefits.",
-  "version"                 : "1.0.2",
+  "version"                 : "1.0.3",
   "authors"                 : [
     {
       "name"                : "Darin Brathwaite",
@@ -34,6 +34,6 @@
   "_comment_coursesURI"     : "Expects json response. Can be a URI such as 'http://localhost/restfulGpaServer/index.php/gpa_api/token' or a .json file",
   "coursesURI"              : "courses.json",
 
-  "_comment_design"         : "Set value to design1, design2, design3 or design4",
-  "design"                  : "design3"
+  "_comment_design"         : "Set value to design1, design2, design3, design4 or design5",
+  "design"                  : "design4"
 }

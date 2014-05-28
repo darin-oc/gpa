@@ -6,7 +6,8 @@ angular.module('gpaApp', [
   // 'ngSanitize',
   'ngRoute',
   'ui.bootstrap.tooltip',
-  'ui.bootstrap.collapse'
+  'ui.bootstrap.collapse',
+  'ui.bootstrap.modal'
 ])
   .config(function ($locationProvider, $routeProvider, $httpProvider) {
     // $locationProvider.html5Mode(true);

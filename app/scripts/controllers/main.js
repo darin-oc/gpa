@@ -6,6 +6,7 @@ angular.module('gpaApp')
     $filter,
     $location,
     $anchorScroll,
+    $modal,
     gradePointsCalculator,
     gradePointAverageCalculator,
     courses,
@@ -26,7 +27,7 @@ angular.module('gpaApp')
     layouts
     ) {
 
-    $scope.campuses           = campuses.collection();
+    $scope.campuses = campuses.collection();
 
     function getFaculties (campus) {
       // console.debug(campus);
@@ -66,13 +67,24 @@ angular.module('gpaApp')
     $scope.campusSelected = function (campus) {
       // console.debug(campus);
       updateSelectedCampus(campus);
-      getFaculties(campus.shortName);
-      $scope.faculty = false;
-      updateSelectedFaculty(false);
-      if (campuses.thisCampus()) {
-        updateGpaScopes();
+      if (campus === null) {
+        getFaculties(null);
+        $scope.faculty = false;
+        updateSelectedFaculty(false);
+        if (campuses.thisCampus()) {
+          updateGpaScopes();
+        }
+        $scope.theme = theme(null);
       }
-      $scope.theme = theme(campus.shortName);
+      else {
+        getFaculties(campus.shortName);
+        $scope.faculty = false;
+        updateSelectedFaculty(false);
+        if (campuses.thisCampus()) {
+          updateGpaScopes();
+        }
+        $scope.theme = theme(campus.shortName);
+      }
     };
 
     $scope.terms              = terms.collection();
@@ -255,7 +267,36 @@ angular.module('gpaApp')
       $scope.term = terms.selectedTerm(term);
     };
 
-    $scope.combinedCumulativeFormulaIsCollapsed = true;
-    $scope.combinedDegreeFormulaIsCollapsed = true;
+    $scope.addCoursesModal = function () {
+      var modalInstance = $modal.open({
+        templateUrl: 'views/addcoursesmodal.html',
+        controller : 'AddcoursesmodalCtrl',
+        size       : 'lg'
+      });
+
+      modalInstance.result
+      .then(function (newCourseRows) {
+        console.debug(newCourseRows);
+        for (var i = 0; i < newCourseRows.length; i++) {
+          courseRows.addRow(newCourseRows[i].term, newCourseRows[i].course, newCourseRows[i].courseType, newCourseRows[i].level, newCourseRows[i].grade, newCourseRows[i].qualityhoursValue);
+        }
+        $scope.newCourseRowsCount = newCourseRows.length;
+        updateGpaScopes();
+      }, function () {
+
+      });
+    };
+
+    $scope.newCourseRow = function (courseRow) {
+      var courseRowsArray, offset;
+      courseRowsArray = courseRows.collection();
+      offset = courseRowsArray.length - $scope.newCourseRowsCount;
+      if (courseRowsArray.indexOf(courseRow) >= offset) {
+        return 'animate-row';
+      }
+    };
+
+    $scope.combinedCumulativeFormulaIsCollapsed = false;
+    $scope.combinedDegreeFormulaIsCollapsed = false;
 
   });

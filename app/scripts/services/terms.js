@@ -6,8 +6,8 @@ angular.module('gpaApp')
     var terms;
 
     terms = [
-      {icon: 'text-danger fa fa-backward', title:'Taken before Semester I 2014/2015', code:201330},
-      {icon: 'text-success fa fa-forward', title:'Taken after Semester I 2014/2015 change', code:201410}
+      {icon: 'text-danger fa fa-backward', name: 'Before Semester I 2014/2015', title:'Taken before Semester I 2014/2015', code:201330},
+      {icon: 'text-success fa fa-forward', name: 'During/after Semester I 2014/2015', title:'Taken after Semester I 2014/2015 change', code:201410}
     ];
 
     // Public API here

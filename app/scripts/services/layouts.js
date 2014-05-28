@@ -20,6 +20,9 @@ angular.module('gpaApp')
           chosenPattern = {view: 'default', layout: 'version3'};
           break;
         case 'design4':
+          chosenPattern = {view: 'default', layout: 'version4'};
+          break;
+        case 'design5':
           chosenPattern = {view: 'openCampus', layout: 'version3'};
           break;
         default:
