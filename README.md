@@ -65,6 +65,32 @@ An example of the expected json response is shown below (also see the example.js
 Javascript's floating point precision issues are well documented http://stackoverflow.com/questions/11695618/dealing-with-float-precision-in-javascript . To work around this, the **big.js** library http://mikemcl.github.io/big.js/ is used for all calculations in the GPA calculator.
 
 ## Formulas used in calulations
+### GPA conversion
+Class | Formula
+--------- | ----------
+**Upper Class** | newGpa = oldGpa
+**Upper Second** | newGpa = ((49 * oldGpa) + 149.5) / 99
+**Lower Second** | newGpa = ((49 * oldGpa) + 149) / 99
+**Pass** | newGpa = (199 * oldGpa) / 99
+```js
+convertOldToNewGpaUsingFormula: function (oldGpa) {
+  if (parseFloat(oldGpa) > 2.99) {
+    return oldGpa;
+  }
+  else if ((parseFloat(oldGpa) <= 2.99) && (parseFloat(oldGpa) > 1.99)) {
+    // ((49 * oldGpa) + 149.5) / 99
+    return ((new Big(49).times(oldGpa)).plus(149.5)).div(99).toFixed(2);
+  }
+  else if ((parseFloat(oldGpa) <= 1.99) && (parseFloat(oldGpa) > 0.99)) {
+    // ((49 * oldGpa) + 149) / 99
+    return ((new Big(49).times(oldGpa)).plus(149)).div(99).toFixed(2);
+  }
+  else if (parseFloat(oldGpa) <= 0.99) {
+    // (199 * oldGpa) / 99
+    return (new Big(199).times(oldGpa)).div(99).toFixed(2);
+  }
+}
+```
 ### Grade points
 gradePoints = qualityHours * qualityPoints
 ```js
