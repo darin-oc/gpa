@@ -14,7 +14,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <button type="button" class="btn btn-success" ng-click="addCoursesModal()">Add Courses</button>
+      <button type="button" id="addcourses" class="btn btn-success" ng-click="addCoursesModal()">Add Courses</button>
     </div>
   </div><br>
   <div class="row">
@@ -30,10 +30,10 @@
     <strong>Missing option!</strong> Choose all options before adding course to list
   </div>
   <div class="row">
-    <div class="col-md-8 table-responsive">
+    <div class="col-md-8 table-responsive" id="coursesandgrades">
       <strong>Courses and Grades</strong>
 
-      <table id="coursegrades" class="table table-hover table-bordered table-condensed gridform">
+      <table class="table table-hover table-bordered table-condensed gridform">
 
         <tbody>
           <tr class="gridheadspacer" ng-class="theme.table">
@@ -90,7 +90,7 @@
       </table>
 
     </div>
-    <div class="col-md-2 table-responsive" id="gpa1">
+    <div class="col-md-2 table-responsive" id="priorgpa">
       <strong>Prior GPA Scheme</strong>
       <table id="gpa1calc" class="table table-hover table-bordered table-condensed gridform">
         <tbody>
@@ -103,9 +103,9 @@
             </th>
           </tr>
           <tr ng-if="courseRows.length===0">
-            <td colspan="8" class="text-center text-muted"><i>Add courses</i></td>
+            <td colspan="8" class="text-center text-muted"><i>Old points</i></td>
           </tr>
-          <tr class="num gridpointsheight" ng-repeat="courseRow in courseRows" ng-class="changeBackgroundColour(courseRow)">
+          <tr class="num gridpointsheight" ng-repeat="courseRow in courseRows" ng-class="[changeBackgroundColour(courseRow), newCourseRow(courseRow)]">
             <td ng-class="courseRow.mutePoints">{{courseRow.adjustedQualityPoints}}</td>
             <td ng-class="courseRow.mutePoints">{{courseRow.adjustedGradePoints}}</td>
           </tr>
@@ -117,7 +117,7 @@
         </tbody>
       </table>
     </div>
-    <div class="col-md-2 table-responsive" id="gpa2">
+    <div class="col-md-2 table-responsive" id="currentgpa">
       <strong class="hidden-md">Current GPA Scheme</strong>
       <strong class="visible-md">Current Scheme</strong>
       <table id="gpa2calc" class="table table-hover table-bordered table-condensed gridform">
@@ -131,9 +131,9 @@
             </th>
           </tr>
           <tr ng-if="courseRows.length===0">
-            <td colspan="8" class="text-center text-muted"><i>Add courses</i></td>
+            <td colspan="8" class="text-center text-muted"><i>Current points</i></td>
           </tr>
-          <tr class="num gridpointsheight" ng-repeat="courseRow in courseRows" ng-class="changeBackgroundColour(courseRow)">
+          <tr class="num gridpointsheight" ng-repeat="courseRow in courseRows" ng-class="[changeBackgroundColour(courseRow), newCourseRow(courseRow)]">
             <td>{{courseRow.adjustedConvertedQP}}</td>
             <td>{{courseRow.adjustedConvertedGP}}</td>
           </tr>
@@ -151,7 +151,7 @@
     <div class="col-md-4"></div>
 
     <div class="col-md-8">
-      <div class="row" id="comparison">
+      <div class="row" id="separategpas">
         <div class="col-md-6">
           <table class="table table-bordered table-condensed gridform gridsummary">
             <tbody>
@@ -209,10 +209,10 @@
   <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-8">
-      <div class="row" id="comparison">
+      <div class="row" id="combinedgpa">
         <div class="col-md-6">
           <div class="panel" ng-class="theme.panel">
-            <div class="panel-heading">
+            <div class="panel-heading text-right">
               <h4 class="panel-title">Computation</h4>
             </div>
             <table class="table table-bordered table-condensed gridform gridsummary">
@@ -238,7 +238,7 @@
         </div>
         <div class="col-md-6">
           <div class="panel" ng-class="theme.panel">
-            <div class="panel-heading">
+            <div class="panel-heading text-center">
               <h4 class="panel-title">Results</h4>
             </div>
             <table id="gpa2results" class="table table-bordered table-condensed gridform">
@@ -266,7 +266,7 @@
     </div>
   </div>
 
-  <div class="panel-group well">
+  <div class="panel-group well" id="formulas">
     <p>Learn how your combined GPAs were calculated below</p>
     <div class="panel panel-success">
       <div class="panel-heading formula" ng-click="combinedCumulativeFormulaIsCollapsed = !combinedCumulativeFormulaIsCollapsed">
@@ -290,10 +290,10 @@
           </div>
             <div class="col-md-9">
               <div class="row text-center">
-                <u>( (Prior Cumulative GPA Hours * Prior Cumulative GPA) + (Current Cumulative GPA Hours * Current Cumulative GPA) )</u>
+                <u>( (Prior Cumulative GPA Hours <strong>x</strong> Prior Cumulative GPA) <strong>+</strong> (Current Cumulative GPA Hours <strong>x</strong> Current Cumulative GPA) )</u>
               </div>
               <div class="row text-center">
-                (Prior Cumulative GPA Hours + Current Cumulative GPA Hours)
+                (Prior Cumulative GPA Hours <strong>+</strong> Current Cumulative GPA Hours)
               </div>
             </div>
           </div>
@@ -306,7 +306,7 @@
           </div>
             <div class="col-md-9">
               <div class="row text-center text-danger">
-                <strong>( ({{oldGpaTotalQualityHours | number:2}} * {{convertedGpa | number:2}}) + ({{newGpaTotalQualityHours | number:2}} * {{newGpa | number:2}}) ) / ({{oldGpaTotalQualityHours | number:2}} + {{newGpaTotalQualityHours | number:2}}) = {{combinedCumulativeGpa | number:3}} ≈ {{combinedCumulativeGpa | number:2}}</strong>
+                <strong>( ({{oldGpaTotalQualityHours | number:2}} <strong>x</strong> {{convertedGpa | number:2}}) <strong>+</strong> ({{newGpaTotalQualityHours | number:2}} <strong>x</strong> {{newGpa | number:2}}) ) / ({{oldGpaTotalQualityHours | number:2}} <strong>+</strong> {{newGpaTotalQualityHours | number:2}}) = {{combinedCumulativeGpa | number:3}} ≈ {{combinedCumulativeGpa | number:2}}</strong>
               </div>
             </div>
           </div>
@@ -335,10 +335,10 @@
           </div>
             <div class="col-md-9">
               <div class="row text-center">
-                <u>( (Prior Degree GPA Hours * Prior Degree GPA) + (Current Degree GPA Hours * Current Degree GPA) )</u>
+                <u>( (Prior Degree GPA Hours <strong>x</strong> Prior Degree GPA) <strong>+</strong> (Current Degree GPA Hours <strong>x</strong> Current Degree GPA) )</u>
               </div>
               <div class="row text-center">
-                (Prior Degree GPA Hours + Current Degree GPA Hours)
+                (Prior Degree GPA Hours <strong>+</strong> Current Degree GPA Hours)
               </div>
             </div>
           </div>
@@ -351,7 +351,7 @@
           </div>
             <div class="col-md-9">
               <div class="row text-center text-danger">
-                <strong>( ({{oldWeightedGpaTotalQualityHours | number:2}} * {{convertedWeightedGpa | number:2}}) + ({{newWeightedGpaTotalQualityHours | number:2}} * {{newWeightedGpa | number:2}}) ) / ({{oldWeightedGpaTotalQualityHours | number:2}} + {{newWeightedGpaTotalQualityHours | number:2}}) = {{combinedWeightedGpa | number:3}} ≈ {{combinedWeightedGpa | number:2}}</strong>
+                <strong>( ({{oldWeightedGpaTotalQualityHours | number:2}} <strong>x</strong> {{convertedWeightedGpa | number:2}}) <strong>+</strong> ({{newWeightedGpaTotalQualityHours | number:2}} <strong>x</strong> {{newWeightedGpa | number:2}}) ) / ({{oldWeightedGpaTotalQualityHours | number:2}} <strong>+</strong> {{newWeightedGpaTotalQualityHours | number:2}}) = {{combinedWeightedGpa | number:3}} ≈ {{combinedWeightedGpa | number:2}}</strong>
               </div>
             </div>
           </div>

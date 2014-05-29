@@ -6,6 +6,11 @@
   <div class="modal-body">
     <div class="container">
       <div class="row">
+        <div class="col-md-12">
+          <i class="text-muted"><strong>Hint: </strong>Click on the green <span class="text-success fa fa-plus-circle"></span> circle to add an additional course</i>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-12 table-responsive">
           <table id="coursegrades" class="table table-hover table-condensed table-striped gridform">
             <tbody>
@@ -44,7 +49,7 @@
                   <i class="text-danger fa fa-minus-circle" tooltip="Delete"></i>
                 </td>
                 <td class="gridaction add" id="modal-add" ng-click="addModalRowBelow(modalRow)">
-                  <i class="text-success fa fa-plus-circle" tooltip="Add below"></i>
+                  <i class="text-success fa fa-plus-circle" tooltip="Add another course below"></i>
                 </td>
               </tr>
               <tr ng-if="modalRows.length===0" ng-click="addModalRowBelow(modalRow)">

@@ -20,7 +20,7 @@
   ],
 
   "_comment_defaultCampus"  : "Can be set to null, open, mona, cave or sta",
-  "defaultCampus"           : "null",
+  "defaultCampus"           : null,
 
   "_comment_dynamicTheme"   : "Set value to true or false",
   "dynamicTheme"            : true,

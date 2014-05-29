@@ -8,7 +8,7 @@ angular.module('gpaApp')
       var gradePoints = 0;
       if(qualityHours && qualityPoints){
         // qualityPoints = qualityPoints.toFixed(2);
-        gradePoints = qualityHours * qualityPoints;
+        gradePoints = new Big(qualityHours).times(qualityPoints);
         gradePoints = gradePoints.toFixed(2);
         // console.log(gradePoints);
       }
