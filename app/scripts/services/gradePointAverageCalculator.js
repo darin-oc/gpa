@@ -46,7 +46,8 @@ angular.module('gpaApp')
             if (isNaN(points)) {
               points = 0;
             }
-            pointsTotal = pointsTotal + points;
+            // pointsTotal + points
+            pointsTotal = new Big(pointsTotal).plus(points);
           }
         }
       }
@@ -69,7 +70,7 @@ angular.module('gpaApp')
                 if (isNaN(qualityhoursValue)) {
                   qualityhoursValue = 0;
                 }
-                qualityHoursTotal = qualityHoursTotal + qualityhoursValue;
+                qualityHoursTotal = new Big(qualityHoursTotal).plus(qualityhoursValue);
               }
             }
             else if (period === 'new') {
@@ -78,7 +79,7 @@ angular.module('gpaApp')
                 if (isNaN(qualityhoursValue)) {
                   qualityhoursValue = 0;
                 }
-                qualityHoursTotal = qualityHoursTotal + qualityhoursValue;
+                qualityHoursTotal = new Big(qualityHoursTotal).plus(qualityhoursValue);
               }
             }
             else {
@@ -86,7 +87,8 @@ angular.module('gpaApp')
               if (isNaN(qualityhoursValue)) {
                 qualityhoursValue = 0;
               }
-              qualityHoursTotal = qualityHoursTotal + qualityhoursValue;
+              // qualityHoursTotal + qualityhoursValue
+              qualityHoursTotal = new Big(qualityHoursTotal).plus(qualityhoursValue);
             }
           }
         }
@@ -134,7 +136,8 @@ angular.module('gpaApp')
             if (isNaN(points)) {
               points = 0;
             }
-            pointsTotal = pointsTotal + parseFloat(points * weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level)));
+            // pointsTotal + parseFloat(points * weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level)))
+            pointsTotal = new Big(pointsTotal).plus(new Big(points).times(weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level))));
           }
         }
       }
@@ -157,7 +160,7 @@ angular.module('gpaApp')
                 if (isNaN(qualityhoursValue)) {
                   qualityhoursValue = 0;
                 }
-                qualityHoursTotal = qualityHoursTotal + parseFloat(allCourseRows[i].qualityhoursValue * weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level)));
+                qualityHoursTotal = new Big(qualityHoursTotal).plus(new Big(allCourseRows[i].qualityhoursValue).times(weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level))));
               }
             }
             else if (period === 'new') {
@@ -166,7 +169,7 @@ angular.module('gpaApp')
                 if (isNaN(qualityhoursValue)) {
                   qualityhoursValue = 0;
                 }
-                qualityHoursTotal = qualityHoursTotal + parseFloat(allCourseRows[i].qualityhoursValue * weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level)));
+                qualityHoursTotal = new Big(qualityHoursTotal).plus(new Big(allCourseRows[i].qualityhoursValue).times(weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level))));
               }
             }
             else {
@@ -174,7 +177,8 @@ angular.module('gpaApp')
               if (isNaN(qualityhoursValue)) {
                 qualityhoursValue = 0;
               }
-              qualityHoursTotal = qualityHoursTotal + parseFloat(allCourseRows[i].qualityhoursValue * weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level)));
+              // qualityHoursTotal + parseFloat(allCourseRows[i].qualityhoursValue * weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level)))
+              qualityHoursTotal = new Big(qualityHoursTotal).plus(new Big(allCourseRows[i].qualityhoursValue).times(weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level))));
             }
           }
         }
@@ -191,7 +195,8 @@ angular.module('gpaApp')
       var gpa = 0;
         // console.debug(oldGpaTotalGradePoints+', '+oldGpaTotalQualityHours);
       if(oldGpaTotalGradePoints && oldGpaTotalQualityHours && (oldGpaTotalGradePoints != 0) && (oldGpaTotalQualityHours != 0)){
-        gpa = oldGpaTotalGradePoints / oldGpaTotalQualityHours;
+        // oldGpaTotalGradePoints / oldGpaTotalQualityHours
+        gpa = new Big(oldGpaTotalGradePoints).div(new Big(oldGpaTotalQualityHours));
       }
       else{
         gpa = 0;
@@ -204,7 +209,7 @@ angular.module('gpaApp')
     function combinedGpaFormula (priorGpaHours, priorGpa, currentGpaHours, currentGpa) {
       var combinedGpa = 0, fixedCombinedGpa, priorGpaProduct, currentGpaProduct, totalHours;
 
-      totalHours = priorGpaHours + currentGpaHours;
+      totalHours = new Big(priorGpaHours).plus(currentGpaHours);
       if ((typeof totalHours === 'undefined') || (totalHours === null) || (isNaN(totalHours)) || (totalHours === 0)) {
         combinedGpa = 0;
       }
