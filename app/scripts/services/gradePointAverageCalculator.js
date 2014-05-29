@@ -158,27 +158,30 @@ angular.module('gpaApp')
               if (parseInt(allCourseRows[i].termCode) < 201410) {
                 qualityhoursValue = parseFloat(allCourseRows[i].qualityhoursValue);
                 if (isNaN(qualityhoursValue)) {
+                  console.error(qualityhoursValue);
                   qualityhoursValue = 0;
                 }
-                qualityHoursTotal = new Big(qualityHoursTotal).plus(new Big(allCourseRows[i].qualityhoursValue).times(weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level))));
+                qualityHoursTotal = new Big(qualityHoursTotal).plus(new Big(qualityhoursValue).times(weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level))));
               }
             }
             else if (period === 'new') {
               if (parseInt(allCourseRows[i].termCode) >= 201410) {
                 qualityhoursValue = parseFloat(allCourseRows[i].qualityhoursValue);
                 if (isNaN(qualityhoursValue)) {
+                  console.error(qualityhoursValue);
                   qualityhoursValue = 0;
                 }
-                qualityHoursTotal = new Big(qualityHoursTotal).plus(new Big(allCourseRows[i].qualityhoursValue).times(weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level))));
+                qualityHoursTotal = new Big(qualityHoursTotal).plus(new Big(qualityhoursValue).times(weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level))));
               }
             }
             else {
               qualityhoursValue = parseFloat(allCourseRows[i].qualityhoursValue);
               if (isNaN(qualityhoursValue)) {
+                console.error(qualityhoursValue);
                 qualityhoursValue = 0;
               }
               // qualityHoursTotal + parseFloat(allCourseRows[i].qualityhoursValue * weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level)))
-              qualityHoursTotal = new Big(qualityHoursTotal).plus(new Big(allCourseRows[i].qualityhoursValue).times(weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level))));
+              qualityHoursTotal = new Big(qualityHoursTotal).plus(new Big(qualityhoursValue).times(weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level))));
             }
           }
         }
@@ -209,7 +212,8 @@ angular.module('gpaApp')
     function combinedGpaFormula (priorGpaHours, priorGpa, currentGpaHours, currentGpa) {
       var combinedGpa = 0, fixedCombinedGpa, priorGpaProduct, currentGpaProduct, totalHours;
 
-      totalHours = new Big(priorGpaHours).plus(currentGpaHours);
+      totalHours = parseInt(new Big(priorGpaHours).plus(currentGpaHours).toString());
+      // console.debug(totalHours);
       if ((typeof totalHours === 'undefined') || (totalHours === null) || (isNaN(totalHours)) || (totalHours === 0)) {
         combinedGpa = 0;
       }

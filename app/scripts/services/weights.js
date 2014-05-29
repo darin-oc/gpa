@@ -52,6 +52,10 @@ angular.module('gpaApp')
         if ((faculty === null) || (typeof faculty === 'undefined')) {
           faculty = 'default';
         }
+        if ((level === null) || (typeof level === 'undefined')) {
+          console.error(level);
+          level = '1';
+        }
         // console.log(campus +','+ faculty+','+ level);
         for (var i = 0; i < weightsByCampusFaculties.length; i++) {
           if (weightsByCampusFaculties[i].campus === campus) {
