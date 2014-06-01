@@ -14,7 +14,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <button type="button" id="addcourses" class="btn btn-success" ng-click="addCoursesModal()">Add Courses</button>
+      <button type="button" id="addcourses" class="btn btn-success" ng-click="addCoursesModal()"><i class="fa fa-plus-circle"></i> Add Courses</button>
     </div>
   </div><br>
   <div class="row">
@@ -38,7 +38,14 @@
         <tbody>
           <tr class="gridheadspacer" ng-class="theme.table">
             <th class="text-center">
-              Include
+              <span class="dropdown" is-open="status.isopen">
+                <a href class="dropdown-toggle">Include <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a ng-click="includeAll(true)">All</a></li>
+                  <li><a ng-click="includeAll(false)">None</a></li>
+                </ul>
+              </span>
             </th>
             <th class="text-center">
               Course
@@ -66,15 +73,17 @@
             <td colspan="8" class="text-center text-muted"><i>Click on the "Add Courses" button to add your courses</i></td>
           </tr>
           <tr ng-repeat="courseRow in courseRows" ng-class="[changeBackgroundColour(courseRow), newCourseRow(courseRow)]">
-            <td class="includeicon"><input type="checkbox" ng-model="courseRow.include" class="switch-small" ng-change="includeCourse(courseRow)">&nbsp;&nbsp;&nbsp;&nbsp;<i ng-if="courseRow.fromWebService" class="text-info fa fa-download" title="from student system" tooltip="Data from student system" tooltip-placement="right"></i></td>
+            <td class="includeicon">
+              <input type="checkbox" ng-model="courseRow.include" class="switch-small" ng-change="includeCourse(courseRow)">&nbsp;&nbsp;&nbsp;&nbsp;<i ng-if="courseRow.fromWebService" class="text-info fa fa-database" title="Automatically entered" tooltip="Data from student system" tooltip-placement="right"></i><i ng-if="!courseRow.fromWebService" class="fa fa-graduation-cap" title="Manually entered" tooltip="Manually added course" tooltip-placement="right"></i>
+            </td>
             <td class="text-center">{{courseRow.course}}</td>
-            <td class="termicon"><i class="{{courseRow.term.icon}}" title="{{courseRow.term.title}}"></i></td>
+            <td class="termicon"><i class="{{courseRow.term.icon}}" tooltip="{{courseRow.term.title}}"></i></td>
             <td class="text-center">{{courseRow.courseType}}</td>
             <td class="text-center">{{courseRow.level}}</td>
             <td class="text-center">{{courseRow.grade}}</td>
             <td class="text-center">{{courseRow.qualityhoursValue}}</td>
             <td class="gridaction removerow" ng-click="removeCourse(courseRow)">
-              <i class="text-danger fa fa-times-circle" title="remove" tooltip="Remove"></i></td>
+              <i class="text-danger fa fa-times-circle" title="Remove" tooltip="Remove"></i></td>
           </tr>
           <tr class="active footerrow">
             <td></td>
@@ -270,15 +279,15 @@
     <p>Learn how your combined GPAs were calculated below</p>
     <div class="panel panel-success">
       <div class="panel-heading formula" ng-click="combinedCumulativeFormulaIsCollapsed = !combinedCumulativeFormulaIsCollapsed">
-        <h4 class="panel-title">
-            Combined Cumulative GPA Formula
-        </h4>
         <span class="collapse-sign" ng-if="combinedCumulativeFormulaIsCollapsed">
-          <i class="glyphicon glyphicon-plus"></i>
+          <i class="glyphicon glyphicon-chevron-right"></i>
         </span>
         <span class="collapse-sign" ng-if="!combinedCumulativeFormulaIsCollapsed">
-          <i class="glyphicon glyphicon-minus"></i>
+          <i class="glyphicon glyphicon-chevron-down"></i>
         </span>
+        <h4 class="panel-title formula-title">
+            Combined Cumulative GPA Formula
+        </h4>
       </div>
       <div collapse="combinedCumulativeFormulaIsCollapsed" class="panel-collapse collapse">
         <div class="panel-body">
@@ -315,15 +324,15 @@
     </div>
     <div class="panel panel-success">
       <div class="panel-heading formula" ng-click="combinedDegreeFormulaIsCollapsed = !combinedDegreeFormulaIsCollapsed">
-        <h4 class="panel-title">
-            Combined Degree GPA Formula
-        </h4>
         <span class="collapse-sign" ng-if="combinedDegreeFormulaIsCollapsed">
-          <i class="glyphicon glyphicon-plus"></i>
+          <i class="glyphicon glyphicon-chevron-right"></i>
         </span>
         <span class="collapse-sign" ng-if="!combinedDegreeFormulaIsCollapsed">
-          <i class="glyphicon glyphicon-minus"></i>
+          <i class="glyphicon glyphicon-chevron-down"></i>
         </span>
+        <h4 class="panel-title formula-title">
+            Combined Degree GPA Formula
+        </h4>
       </div>
       <div collapse="combinedDegreeFormulaIsCollapsed" class="panel-collapse collapse">
         <div class="panel-body">

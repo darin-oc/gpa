@@ -23,9 +23,9 @@
   <div class="col-md-6">
     <div class="row">
       <div class="form-group col-xs-12">
-        <label for="s2id_autogen2">Faculty</label>
-        <select id="faculty" class="form-control select2" tabindex="-1" ng-model="faculty" ng-options="faculty.name for faculty in faculties | orderBy:'name'" ng-change="facultySelected(faculty)">
-              <option value="">Select a Faculty</option>
+        <label for="title">Faculty</label>
+        <select id="faculty" class="form-control select2" tabindex="-1" ng-model="faculty" ng-options="faculty.name for faculty in faculties | orderBy:'name'" ng-change="facultySelected(faculty)" ng-disabled="disableFaulty" title="{{disableFaultyToolTip}}">
+          <option value="">Select a Faculty</option>
         </select>
       </div>
     </div>

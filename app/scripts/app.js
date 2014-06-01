@@ -7,7 +7,8 @@ angular.module('gpaApp', [
   'ngRoute',
   'ui.bootstrap.tooltip',
   'ui.bootstrap.collapse',
-  'ui.bootstrap.modal'
+  'ui.bootstrap.modal',
+  'ui.bootstrap.dropdown'
 ])
   .config(function ($locationProvider, $routeProvider, $httpProvider) {
     // $locationProvider.html5Mode(true);

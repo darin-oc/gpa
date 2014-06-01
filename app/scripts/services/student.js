@@ -34,7 +34,7 @@ angular.module('gpaApp')
 
         courseRowInfo = getStudentProgrammeRecord(studentProgrammeRecordURI).$promise
         .then(function (response) {
-          var sar = response.sar, cqp, gradepoints, blankqualitypoints, adjusted, adjustedConverted, courseRows = [];
+          var sar = response.sar, cqp, gradepoints, adjusted, adjustedConverted, courseRows = [];
 
           if ((typeof response.sar !== 'undefined') && (response.sar !== null)) {
             for (var i = 0; i < sar.length; i++) {
@@ -58,7 +58,6 @@ angular.module('gpaApp')
                 qualityhoursValue      :sar[i].quality_hours,
                 qualityPoints          :sar[i].quality_points,
                 adjustedQualityPoints  :adjusted.qualityPoints,
-                blankQualityPoints     :blankqualitypoints,
                 gradePoints            :gradepoints,
                 adjustedGradePoints    :adjusted.gradePoints,
                 mutePoints             :adjusted.mute,

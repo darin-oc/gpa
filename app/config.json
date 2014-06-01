@@ -29,7 +29,7 @@
   "defaultFaculty"          : null,
 
   "_comment_studentProgrammeRecordURI": "Expects json response. Can be a URI such as 'http://localhost/restfulGpaServer/index.php/gpa_api/token' or a .json file. Otherwise give it an empty string",
-  "studentProgrammeRecordURI": "example.json",
+  "studentProgrammeRecordURI": "example1.json",
 
   "_comment_coursesURI"     : "Expects json response. Can be a URI such as 'http://localhost/restfulGpaServer/index.php/gpa_api/token' or a .json file",
   "coursesURI"              : "courses.json",

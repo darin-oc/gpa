@@ -64,6 +64,17 @@ angular.module('gpaApp')
       }
     }
 
+    function disableFacultySelect (campus) {
+      if (campus === 'open' || campus === null) {
+        $scope.disableFaulty = true;
+        $scope.disableFaultyToolTip = 'No faculties available for this campus selection';
+      }
+      else {
+        $scope.disableFaulty = false;
+        $scope.disableFaultyToolTip = '';
+      }
+    }
+
     $scope.campusSelected = function (campus) {
       // console.debug(campus);
       updateSelectedCampus(campus);
@@ -75,15 +86,19 @@ angular.module('gpaApp')
           updateGpaScopes();
         }
         $scope.theme = theme(null);
+        disableFacultySelect(null);
       }
       else {
         getFaculties(campus.shortName);
         $scope.faculty = false;
         updateSelectedFaculty(false);
+        if (campuses.thisCampus() === 'open') {
+        }
         if (campuses.thisCampus()) {
           updateGpaScopes();
         }
         $scope.theme = theme(campus.shortName);
+        disableFacultySelect(campus.shortName);
       }
     };
 
@@ -161,6 +176,7 @@ angular.module('gpaApp')
         getFaculties(config.defaultCampus);
         $scope.faculty    = (faculties.defaultFaculty(config.defaultFaculty));
         updateSelectedFaculty(config.defaultFaculty);
+        disableFacultySelect(config.defaultCampus);
       });
 
       student.courseRowInformation(config.studentProgrammeRecordURI)
@@ -294,6 +310,16 @@ angular.module('gpaApp')
       if (courseRowsArray.indexOf(courseRow) >= offset) {
         return 'animate-row';
       }
+    };
+
+    $scope.status = {
+      isopen: false
+    };
+
+    $scope.includeAll = function (booleanValue) {
+      $scope.status.isopen = !$scope.status.isopen;
+      courseRows.includeAll(booleanValue);
+      updateGpaScopes();
     };
 
     $scope.combinedCumulativeFormulaIsCollapsed = false;

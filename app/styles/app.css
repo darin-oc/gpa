@@ -59,6 +59,9 @@ textarea {
 .gridform td.gridaction, .gridform td.includeicon {
   text-align: center;
   vertical-align: middle;
+}
+
+.gridform td.gridaction{
   cursor: pointer;
 }
 
@@ -152,8 +155,12 @@ h4.panel-title {
   display: inline;
 }
 
+.formula-title {
+  padding-left: 15px;
+}
+
 .collapse-sign {
-  float: right;
+  float: left;
 }
 
 body .modal-add, body .modal-dialog {

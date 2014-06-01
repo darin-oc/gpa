@@ -71,6 +71,11 @@ angular.module('gpaApp')
       removeRow: function (rowObject) {
         var index = courseRows.indexOf(rowObject);
         courseRows.splice(index, 1);
+      },
+      includeAll: function (booleanValue) {
+        for (var i = 0; i < courseRows.length; i++) {
+          courseRows[i].include = booleanValue;
+        }
       }
     };
   });
