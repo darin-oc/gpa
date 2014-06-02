@@ -136,6 +136,7 @@ function combinedGpaFormula (priorGpaHours, priorGpa, currentGpaHours, currentGp
     priorGpaProduct   = (new Big(priorGpaHours).times(priorGpa)).toFixed(2);
     currentGpaProduct = (new Big(currentGpaHours).times(currentGpa)).toFixed(2);
     combinedGpa       = (new Big(priorGpaProduct).plus(currentGpaProduct)).div(new Big(totalHours));
+  }
   fixedCombinedGpa = combinedGpa.toFixed(3);
   return fixedCombinedGpa.toString();
 }

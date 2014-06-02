@@ -24,7 +24,8 @@ angular.module('gpaApp')
     terms,
     configurations,
     student,
-    layouts
+    layouts,
+    sessionUser
     ) {
 
     $scope.campuses = campuses.collection();
@@ -179,14 +180,29 @@ angular.module('gpaApp')
         disableFacultySelect(config.defaultCampus);
       });
 
-      student.courseRowInformation(config.studentProgrammeRecordURI)
-      .then(function (courseRowsArray) {
-        if (courseRows.collection().length === 0) {
-          courseRows.addArray(courseRowsArray);
-        }
-      })
-      .then(function () {
-        updateGpaScopes();
+      sessionUser.userId(config.userURI)
+      .then(function (id) {
+        console.debug(id);
+        student.courseRowInformation(config.studentProgrammeRecordURI + '/id/' + id)
+        .then(function (courseRowsArray) {
+          if (courseRows.collection().length === 0) {
+            courseRows.addArray(courseRowsArray);
+          }
+        })
+        .then(function () {
+          updateGpaScopes();
+        });
+      }, function (error) {
+        console.dir(error);
+        student.courseRowInformation(config.studentProgrammeRecordURI)
+        .then(function (courseRowsArray) {
+          if (courseRows.collection().length === 0) {
+            courseRows.addArray(courseRowsArray);
+          }
+        })
+        .then(function () {
+          updateGpaScopes();
+        });
       });
 
       courses.coursesRest(config.coursesURI, $scope.courses).$promise
@@ -203,7 +219,7 @@ angular.module('gpaApp')
       $scope.levels             = levels.collection();
       $scope.grades             = grades.collection();
       $scope.qualityhoursValues = qualityhoursValues.collection();
-    }, function (error){
+    }, function (error) {
       console.debug('config request failed: ' + error);
       $scope.campus = campuses.defaultCampus('default');
       updateSelectedCampus();
@@ -211,6 +227,7 @@ angular.module('gpaApp')
       getFaculties();
       // $scope.faculty = (null);
       updateSelectedFaculty(false);
+      disableFacultySelect(null);
 
       student.courseRowInformation('gpa.json')
       .then(function (courseRowsArray) {
