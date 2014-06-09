@@ -141,3 +141,4 @@ function combinedGpaFormula (priorGpaHours, priorGpa, currentGpaHours, currentGp
   return fixedCombinedGpa.toString();
 }
 ```
+### GNU General Public License
