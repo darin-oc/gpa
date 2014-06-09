@@ -164,6 +164,8 @@ angular.module('gpaApp')
 
     configurations.settings().$promise
     .then(function (config) {
+      $scope.combinedCumulativeFormulaIsCollapsed = config.collapseCombinedCumulativeFormula;
+      $scope.combinedDegreeFormulaIsCollapsed = config.collapseCombinedDegreeFormula;
       layouts.design(config.design)
       .then(function (designObject) {
         $scope.campusView = designObject.view;
@@ -182,8 +184,15 @@ angular.module('gpaApp')
 
       sessionUser.userId(config.userURI)
       .then(function (id) {
+        var studentURI;
         console.debug(id);
-        student.courseRowInformation(config.studentProgrammeRecordURI + '/id/' + id)
+        if (id.id === '') {
+          studentURI = config.studentProgrammeRecordURI;
+        }
+        else {
+          studentURI = config.studentProgrammeRecordURI + '/id/' + id.id;
+        }
+        student.courseRowInformation(studentURI)
         .then(function (courseRowsArray) {
           if (courseRows.collection().length === 0) {
             courseRows.addArray(courseRowsArray);
@@ -228,6 +237,8 @@ angular.module('gpaApp')
       // $scope.faculty = (null);
       updateSelectedFaculty(false);
       disableFacultySelect(null);
+      $scope.combinedCumulativeFormulaIsCollapsed = false;
+      $scope.combinedDegreeFormulaIsCollapsed = false;
 
       student.courseRowInformation('gpa.json')
       .then(function (courseRowsArray) {
@@ -338,8 +349,5 @@ angular.module('gpaApp')
       courseRows.includeAll(booleanValue);
       updateGpaScopes();
     };
-
-    $scope.combinedCumulativeFormulaIsCollapsed = false;
-    $scope.combinedDegreeFormulaIsCollapsed = false;
 
   });

@@ -128,14 +128,18 @@ $(document).ready(function() {
 	});
 
 	$(document).scroll(function() {
-		var myhero = $(this).scrollTop();
-		var mycalc = $('#gpacalculator').offset().top;
+    var myhero, mycalc, myopacity,rgba ;
+		myhero = $(this).scrollTop();
+		mycalc = $('#gpacalculator').offset().top;
 		mycalc = mycalc/4;
-		if (myhero<=mycalc) {
-			var myopacity = myhero/mycalc;
+    // console.debug(myhero+','+mycalc);
+		// if (myhero <= mycalc) {
+			myopacity = myhero/mycalc;
+      rgba = '108,108,108,' + myopacity;
       // $('#topnav').attr('style', 'background-color:rgba(67,158,36,'+myopacity+')');
-      $('#topnav').attr('style', 'background-color:rgba(128,143,150,'+myopacity+')');
-		}
+      $('#topnav').attr('style', 'background-color:rgba(' + rgba + ')');
+      $('header.navbar.navbar-inverse.navbar-fixed-top').attr('style', 'border-color:rgba(' + rgba + ')');
+		// }
 	});
 
 });
