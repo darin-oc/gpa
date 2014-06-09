@@ -1,7 +1,7 @@
 {
   "name"                    : "GPA Comparison Calculator",
   "description"             : "The Board of Undergraduate Studies introduces a revised Grade Point Average (GPA) effective Semester I 2014/2015. Visit the http://www.uwi.edu/undergraduatestudies/gpascheme.aspx page to learn about the changes and the benefits.",
-  "version"                 : "1.0.4",
+  "version"                 : "1.0.5",
   "authors"                 : [
     {
       "name"                : "Darin Brathwaite",
@@ -20,7 +20,7 @@
   ],
 
   "_comment_defaultCampus"  : "Can be set to null, open, mona, cave or sta",
-  "defaultCampus"           : "open",
+  "defaultCampus"           : null,
 
   "_comment_dynamicTheme"   : "Set value to true or false",
   "dynamicTheme"            : true,
@@ -28,15 +28,21 @@
   "_comment_defaultFaculty" : "Can be set to null or the shortName of a faculty",
   "defaultFaculty"          : null,
 
-  "_comment_userURI"        : "Expects json response. Can be a URI such as 'http://localhost/restfulGpaServer/index.php/gpa_api/token' or a .json file. Otherwise give it an empty string",
-  "userURI"                 : "user1.json",
+  "_comment_userURI"        : "Expects json response. Can be a URI such as 'http://localhost/restfulGpaServer/index.php/gpa_api/token' or a .json file",
+  "userURI"                 : "user.json",
 
-  "_comment_studentProgrammeRecordURI": "Expects json response. Can be a URI such as 'http://localhost/restfulGpaServer/index.php/gpa_api/token' or a .json file. Otherwise give it an empty string",
+  "_comment_studentProgrammeRecordURI": "Expects json response. Can be a URI such as 'http://localhost/restfulGpaServer/index.php/gpa_api/token' or a .json file",
   "studentProgrammeRecordURI": "example.json",
 
   "_comment_coursesURI"     : "Expects json response. Can be a URI such as 'http://localhost/restfulGpaServer/index.php/gpa_api/token' or a .json file",
   "coursesURI"              : "courses.json",
 
   "_comment_design"         : "Set value to design1, design2, design3, design4 or design5",
-  "design"                  : "design5"
+  "design"                  : "design4",
+
+  "_comment_collapseCombinedCumulativeFormula" : "Set value to true or false",
+  "collapseCombinedCumulativeFormula"          : true,
+
+  "_comment_collapseCombinedDegreeFormula" : "Set value to true or false",
+  "collapseCombinedDegreeFormula"          : true
 }
