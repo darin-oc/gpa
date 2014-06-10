@@ -287,6 +287,7 @@ angular.module('gpaApp')
     };
 
     $scope.removeCourse = function (courseToRemove) {
+      $scope.newCourseRowsCount = 0;
       courseRows.removeRow(courseToRemove);
       updateGpaScopes();
     };

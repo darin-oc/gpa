@@ -18,6 +18,8 @@
       "email"               : "darin.brathwaite@open.uwi.edu"
     }
   ],
+  "license"                 : "GNU General Public License <http://www.gnu.org/licenses/>",
+  "copyright"               : "Copyright © 2013 The University of the West Indies",
 
   "_comment_defaultCampus"  : "Can be set to null, open, mona, cave or sta",
   "defaultCampus"           : null,
@@ -32,7 +34,7 @@
   "userURI"                 : "user.json",
 
   "_comment_studentProgrammeRecordURI": "Expects json response. Can be a URI such as 'http://localhost/restfulGpaServer/index.php/gpa_api/token' or a .json file",
-  "studentProgrammeRecordURI": "example.json",
+  "studentProgrammeRecordURI": "example1.json",
 
   "_comment_coursesURI"     : "Expects json response. Can be a URI such as 'http://localhost/restfulGpaServer/index.php/gpa_api/token' or a .json file",
   "coursesURI"              : "courses.json",
@@ -40,9 +42,9 @@
   "_comment_design"         : "Set value to design1, design2, design3, design4 or design5",
   "design"                  : "design4",
 
-  "_comment_collapseCombinedCumulativeFormula" : "Set value to true or false",
-  "collapseCombinedCumulativeFormula"          : true,
+  "_comment_collapseCombinedCumulativeFormula": "Set value to true or false",
+  "collapseCombinedCumulativeFormula"         : true,
 
-  "_comment_collapseCombinedDegreeFormula" : "Set value to true or false",
-  "collapseCombinedDegreeFormula"          : true
+  "_comment_collapseCombinedDegreeFormula": "Set value to true or false",
+  "collapseCombinedDegreeFormula"         : true
 }
