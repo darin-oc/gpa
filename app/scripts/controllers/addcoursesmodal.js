@@ -21,14 +21,11 @@ angular.module('gpaApp')
     $scope.grades             = grades.collection();
     $scope.qualityhoursValues = qualityhoursValues.collection();
     $scope.modalRows          = modalRows.collection();
-    $scope.alreadyClickedAdd  = false;
 
     $scope.addModalRowBelow = function (afterThisRow) {
       $scope.incomplete = false;
       // console.debug(afterThisRow);
       modalRows.addRow(afterThisRow);
-      $scope.alreadyClickedAdd = true;
-      $scope.showHint = false;
     };
 
     $scope.removeModalRow = function (rowToRemove) {
@@ -39,11 +36,6 @@ angular.module('gpaApp')
     $scope.change = function (rowObject, key, value) {
       $scope.incomplete = false;
       modalRows.changeRowValue(rowObject, key, value);
-      if ($scope.alreadyClickedAdd  === false) {
-        if (((rowObject.course !== null) && (typeof rowObject.course !== 'undefined')) && ((rowObject.term !== null) && (typeof rowObject.term !== 'undefined')) && ((rowObject.courseType !== null) && (typeof rowObject.courseType !== 'undefined')) && ((rowObject.level !== null) && (typeof rowObject.level !== 'undefined')) && ((rowObject.grade !== null) && (typeof rowObject.grade !== 'undefined')) && ((rowObject.qualityhoursValue !== null) && (typeof rowObject.qualityhoursValue !== 'undefined'))) {
-          $scope.showHint = true;
-        }
-      }
     };
 
     $scope.valid = 'modal-select';
