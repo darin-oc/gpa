@@ -7,7 +7,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <i class="text-muted"><strong>Hint: </strong>Click on the green <span class="text-success fa fa-plus-circle"></span> circle to add an additional course</i>
+          <i ng-class="{'hint':showHint}"><strong>Hint: </strong>Click on the green <span class="text-success fa fa-plus-circle"></span> circle to add an additional course</i>
         </div>
       </div>
       <div class="row">
@@ -48,7 +48,7 @@
                 <td class="gridaction add" id="modal-minus" ng-click="removeModalRow(modalRow)">
                   <i class="text-danger fa fa-minus-circle" tooltip="Delete"></i>
                 </td>
-                <td class="gridaction add" id="modal-add" ng-click="addModalRowBelow(modalRow)">
+                <td class="gridaction add" id="modal-add" ng-click="addModalRowBelow(modalRow)" ng-class="{'hint':showHint}">
                   <i class="text-success fa fa-plus-circle" tooltip="Add another course"></i>
                 </td>
               </tr>
