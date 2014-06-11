@@ -40,6 +40,11 @@ angular.module('gpaApp')
           {level:'1', weight:0},
           {level:'2', weight:1},
           {level:'3', weight:1}
+        ]},
+        {faculty:'Eng', weights: [
+          {level:'1', weight:0.1},
+          {level:'2', weight:0.3},
+          {level:'3', weight:0.6}
         ]}
       ]}
     ];

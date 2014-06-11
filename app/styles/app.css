@@ -188,15 +188,15 @@ body .modal-body .container {
 }
 
 #modal-level {
-  width: 45px;
+  width: 50px;
 }
 
 #modal-grade {
-  width: 40px;
+  width: 50px;
 }
 
 #modal-qualityhrs {
-  width:55px;
+  width:65px;
 }
 
 #modal-minus {
@@ -258,6 +258,59 @@ tr.ng-scope.animate-row {
     opacity: 1;
   }
 }
+
+.hint {
+  -webkit-animation: enter 3000ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  animation: enter 3000ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+@-webkit-keyframes enter {
+  from {
+    opacity: 0;
+  }
+  20% {
+    opacity: .5;
+  }
+  40% {
+    opacity: .15;
+    background-color: yellow;
+    /*color: red;*/
+    font-size: large;
+  }
+  60% {
+    opacity: .75;
+    font-size: large;
+  }
+  80% {
+    opacity: .3;
+    font-size: large;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes enter {
+  from {
+    opacity: 0;
+  }
+  20% {
+    opacity: .5;
+  }
+  40% {
+    opacity: .15;
+    background-color: yellow;
+    color: red;
+  }
+  60% {
+    opacity: .75;
+  }
+  80% {
+    opacity: .3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 
 #remove {
   width: 55px

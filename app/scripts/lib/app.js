@@ -128,7 +128,7 @@ $(document).ready(function() {
 	});
 
 	$(document).scroll(function() {
-    var myhero, mycalc, myopacity,rgba ;
+    var myhero, mycalc, myopacity,rgba;
 		myhero = $(this).scrollTop();
 		mycalc = $('#gpacalculator').offset().top;
 		mycalc = mycalc/4;

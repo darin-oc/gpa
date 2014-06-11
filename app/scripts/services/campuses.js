@@ -13,11 +13,11 @@ angular.module('gpaApp')
     ];
 
     themes = [
-      {name:'open', color:'rgba(250,102,034,0.9552238805970149)', alert:'alert-warning', table:'warning', font:'text-yg', jumbofont:'jumbocolordefault', panel:'panel-warning'},
-      {name:'mona', color:'rgba(229,015,022,0.9552238805970149)', alert:'alert-danger', table:'danger', font:'text-yg', jumbofont:'jumbocolordefault', panel:'panel-danger'},
-      {name:'cave', color:'rgba(252,204,056,0.9552238805970149)', alert:'alert-warning', table:'warning', font:'success', jumbofont:'jumbocolorblack', panel:'panel-warning'},
-      {name:'sta', color:'rgba(030,107,201,0.9552238805970149)', alert:'alert-info', table:'sta', font:'text-yg', jumbofont:'jumbocolordefault', panel:'panel-info'},
-      {name:'default', color:'rgba(67,158,36,0.9552238805970149)', alert:'alert-success', table:'success', font:'text-yg', jumbofont:'jumbocolordefault', panel:'panel-success'}
+      {name:'open', color:'rgba(250,102,034,0.9552238805970149)', alert:'alert-warning', table:'warning', font:'text-yg', jumbofont:'jumbocolordefault', panel:'panel-warning', tourButton:'btn-success'},
+      {name:'mona', color:'rgba(229,015,022,0.9552238805970149)', alert:'alert-danger', table:'danger', font:'text-yg', jumbofont:'jumbocolordefault', panel:'panel-danger', tourButton:'btn-success'},
+      {name:'cave', color:'rgba(252,204,056,0.9552238805970149)', alert:'alert-warning', table:'warning', font:'success', jumbofont:'jumbocolorblack', panel:'panel-warning', tourButton:'btn-success'},
+      {name:'sta', color:'rgba(030,107,201,0.9552238805970149)', alert:'alert-info', table:'sta', font:'text-yg', jumbofont:'jumbocolordefault', panel:'panel-info', tourButton:'btn-success'},
+      {name:'default', color:'rgba(67,158,36,0.9552238805970149)', alert:'alert-success', table:'success', font:'text-yg', jumbofont:'jumbocolordefault', panel:'panel-success', tourButton:'btn-warning'}
     ];
     // Public API here
     return {

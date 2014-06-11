@@ -22,7 +22,7 @@ angular.module('gpaApp')
 
     function remove (rowObject) {
       var index = modalRows.indexOf(rowObject);
-      console.debug(index);
+      // console.debug(index);
       modalRows.splice(index, 1);
     }
 
