@@ -112,7 +112,7 @@
             </th>
           </tr>
           <tr ng-if="courseRows.length===0">
-            <td colspan="8" class="text-center text-muted"><i>Old points</i></td>
+            <td colspan="8" class="text-center text-muted"><i>Prior points</i></td>
           </tr>
           <tr class="num gridpointsheight" ng-repeat="courseRow in courseRows" ng-class="[changeBackgroundColour(courseRow), newCourseRow(courseRow)]">
             <td ng-class="courseRow.mutePoints">{{courseRow.adjustedQualityPoints}}</td>
@@ -127,8 +127,8 @@
       </table>
     </div>
     <div class="col-md-2 table-responsive" id="currentgpa">
-      <strong class="hidden-md">Current GPA Scheme</strong>
-      <strong class="visible-md">Current Scheme</strong>
+      <strong class="hidden-md">2014/2015 GPA Scheme</strong>
+      <strong class="visible-md">2014/2015 Scheme</strong>
       <table id="gpa2calc" class="table table-hover table-bordered table-condensed gridform">
         <tbody>
           <tr class="gridheadspacer" ng-class="theme.table">
@@ -140,7 +140,7 @@
             </th>
           </tr>
           <tr ng-if="courseRows.length===0">
-            <td colspan="8" class="text-center text-muted"><i>Current points</i></td>
+            <td colspan="8" class="text-center text-muted"><i>2014/2015 points</i></td>
           </tr>
           <tr class="num gridpointsheight" ng-repeat="courseRow in courseRows" ng-class="[changeBackgroundColour(courseRow), newCourseRow(courseRow)]">
             <td>{{courseRow.adjustedConvertedQP}}</td>
