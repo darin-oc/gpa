@@ -54,16 +54,13 @@
               Period
             </th>
             <th class="text-center">
-              Type
+              Grade
             </th>
             <th class="text-center">
               Level
             </th>
             <th class="text-center">
-              Grade
-            </th>
-            <th class="text-center">
-              Quality Hours
+              Credit Hours
             </th>
             <th class="text-center" id="remove">
               Remove Row
@@ -78,16 +75,15 @@
             </td>
             <td class="text-center">{{courseRow.course}}</td>
             <td class="termicon"><i class="{{courseRow.term.icon}}" tooltip="{{courseRow.term.title}}"></i></td>
-            <td class="text-center">{{courseRow.courseType}}</td>
-            <td class="text-center">{{courseRow.level}}</td>
             <td class="text-center">{{courseRow.grade}}</td>
+            <td class="text-center">{{courseRow.level}}</td>
             <td class="text-center">{{courseRow.qualityhoursValue}}</td>
             <td class="gridaction removerow" ng-click="removeCourse(courseRow)">
               <i class="text-danger fa fa-times-circle" title="Remove" tooltip="Remove"></i></td>
           </tr>
           <tr class="active footerrow">
             <td></td>
-            <td colspan="5">
+            <td colspan="4">
               <strong>Totals</strong>
             </td>
             <td class="text-center">{{totalQualityHours | number:2}}</td>

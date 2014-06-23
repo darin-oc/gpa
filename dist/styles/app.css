@@ -183,20 +183,16 @@ body .modal-body .container {
   width: 130px;
 }
 
-#modal-type {
-  width: 60px;
-}
-
 #modal-level {
-  width: 50px;
+  width: 70px;
 }
 
 #modal-grade {
-  width: 50px;
+  width: 60px;
 }
 
 #modal-qualityhrs {
-  width:65px;
+  width:85px;
 }
 
 #modal-minus {
@@ -270,4 +266,8 @@ button#addcourses.btn.btn-success.tour-step-backdrop {
 .navbar-inverse {
   opacity: 0.9;
   text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+
+select.form-control.ng-pristine.ng-valid.modal-select[disabled] {
+  background-color: lightgreen;
 }

@@ -24,23 +24,12 @@
     <div class="row">
       <div class="form-group col-xs-12">
         <label for="title">Faculty</label>
-        <select id="faculty" class="form-control select2" tabindex="-1" ng-model="faculty" ng-options="faculty.name for faculty in faculties | orderBy:'name'" ng-change="facultySelected(faculty)" ng-disabled="disableFaulty" title="{{disableFaultyToolTip}}">
+        <select id="faculty" class="form-control select2" tabindex="-1" ng-model="campusFaculty.faculty" ng-options="faculty.name for faculty in faculties | orderBy:'name'" ng-change="facultySelected(campusFaculty.faculty)" ng-disabled="disableFaulty" title="{{disableFaultyToolTip}}">
           <option value="">Select a Faculty</option>
         </select>
       </div>
     </div>
   </div>
-
-  <!-- <div class="col-md-4">
-    <div class="row">
-      <div class="form-group col-xs-12">
-        <label for="title">Programme</label>
-        <select id="programme" class="form-control select2" tabindex="-1" ng-model="programmes" ng-options="programme.name group by programme.group for programme in programmes | orderBy:'name'">
-          <option value="">Select a Programme</option>
-        </select>
-      </div>
-    </div>
-  </div> -->
 
 </div>
 
