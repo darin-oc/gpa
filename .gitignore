@@ -4,7 +4,6 @@ node_modules
 app/bower_components1
 app/.buildignore
 app/.htaccess
-app/favicon.ico
 app/gpa.json
 app/gpa1.json
 app/gpa_copy.json

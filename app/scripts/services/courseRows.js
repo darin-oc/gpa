@@ -41,7 +41,10 @@ angular.module('gpaApp')
       addRow: function (term, course, courseType, level, grade, qualityhoursValue) {
         var qp, cqp, adjusted, adjustedConverted;
         if (term === null || (typeof term === 'undefined')) {
-          term = terms.selectedTerm(201410);
+          term = {name:'Core', value:'Core'};
+        }
+        if (courseType === null || (typeof courseType === 'undefined')) {
+          courseType = terms.selectedTerm(201410);
         }
 
         qp = $filter('getQualityPoints')(grades.collection(), grade.name);

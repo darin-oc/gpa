@@ -18,7 +18,7 @@
     <div class="container" style="padding-top:1em;">
       <h1>Revised GPA</h1>
       <p>
-        The Board of Undergraduate Studies introduces a revised Grade Point Average (GPA) effective Semester I 2014/2015. Visit the <a href="http://www.uwi.edu/undergraduatestudies/gpascheme.aspx" target="_blank" class="text-yg" ng-class="theme.font">Introduction of Revised GPA Scheme <i class="fa fa-external-link"></i></a> page to learn about the changes and the benefits.
+        The Office of the Board for Undergraduate Studies introduces a revised Grade Point Average (GPA) effective Semester I 2014/2015. Visit the <a href="http://www.uwi.edu/undergraduatestudies/gpascheme.aspx" target="_blank" class="text-yg" ng-class="theme.font">Introduction of Revised GPA Scheme <i class="fa fa-external-link"></i></a> page to learn about the changes and the benefits.
       </p>
       <p>
         <br>
@@ -27,7 +27,7 @@
           Calculate my GPA
         </a> -->
         <a class="btn btn-lg" ng-class="theme.tourButton" style="margin-bottom:10px;" role="button" id="help">
-          <i class="fa fa-question-circle"></i> {{campus.name}}Show me what to do ...
+          <i class="fa fa-question-circle"></i> Show me what to do ...
         </a>
         <a id="calculator"></a>
 
@@ -38,7 +38,7 @@
 
   <div id="gpacalculator" class="container">
     <p id="disclaimer">
-      <strong>Disclaimer:</strong> This GPA calculator is for your information only. Your UWI campus Registrar's Office is the only official entity which may verify and certify grade point averages for degree completion and other program requirements.
+      <strong>Disclaimer:</strong> This GPA calculator is for your information only. The UWI Registrar's Office is the only official entity which may verify and certify grade point averages for degree completion and other program requirements.
     </p>
 
     <div ng-switch on="campusView">
@@ -71,6 +71,6 @@
 
 <div id="footer">
   <div class="container">
-    <p class="text-muted credit">Copyright © 2013 The University of the West Indies</p>
+    <p class="text-muted credit">Copyright © {{date | date:'yyyy'}} The University of the West Indies</p>
   </div>
 </div>

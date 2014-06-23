@@ -29,10 +29,13 @@ angular.module('gpaApp')
     ) {
 
     $scope.campuses = campuses.collection();
+    $scope.campusFaculty = {
+      faculty: ''
+    };
 
     function getFaculties (campus) {
-      // console.debug(campus);
       if (campus) {
+        // console.debug(campus);
         $scope.faculties = faculties.campusCollection(campus);
       }
       else {
@@ -42,13 +45,13 @@ angular.module('gpaApp')
 
     function updateSelectedFaculty (selectedFaculty) {
       var faculty;
-      // console.debug($scope.faculty);
-      if ((typeof selectedFaculty !== 'undefined') || (selectedFaculty)) {
+      if ((typeof selectedFaculty !== 'undefined') && (selectedFaculty)) {
         faculty = selectedFaculty;
       }
       else {
         faculty = false;
       }
+      // console.debug(faculty);
       faculties.selectedFaculty(faculty);
     }
 
@@ -81,7 +84,6 @@ angular.module('gpaApp')
       updateSelectedCampus(campus);
       if (campus === null) {
         getFaculties(null);
-        $scope.faculty = false;
         updateSelectedFaculty(false);
         if (campuses.thisCampus()) {
           updateGpaScopes();
@@ -91,15 +93,13 @@ angular.module('gpaApp')
       }
       else {
         getFaculties(campus.shortName);
-        $scope.faculty = false;
         updateSelectedFaculty(false);
-        if (campuses.thisCampus() === 'open') {
-        }
         if (campuses.thisCampus()) {
           updateGpaScopes();
         }
         $scope.theme = theme(campus.shortName);
         disableFacultySelect(campus.shortName);
+        $scope.campusFaculty.faculty = faculties.thisFaculty();
       }
     };
 
@@ -123,10 +123,8 @@ angular.module('gpaApp')
 
     function updateGpaScopes () {
       var faculty, oldGpaTotalGradePoints, oldGpaTotalQualityPoints, newGpaTotalQualityPoints, newGpaTotalGradePoints;
-      if ((typeof $scope.faculty !== 'undefined') && ($scope.faculty !== null)) {
-        faculty = $scope.faculty.shortName;
-      }
-      else {
+      faculty = faculties.thisFaculty();
+      if ((typeof faculty === 'undefined') || (faculty === null)) {
         faculty = false;
       }
       $scope.oldGpaTotalQualityPoints         = gradePointAverageCalculator.sumPoints('adjustedQualityPoints');
@@ -177,7 +175,7 @@ angular.module('gpaApp')
         campuses.dynamicTheme(config.dynamicTheme);
         $scope.theme      = theme(config.defaultCampus);
         getFaculties(config.defaultCampus);
-        $scope.faculty    = (faculties.defaultFaculty(config.defaultFaculty));
+        $scope.campusFaculty.faculty    = (faculties.defaultFaculty(config.defaultFaculty));
         updateSelectedFaculty(config.defaultFaculty);
         disableFacultySelect(config.defaultCampus);
       });
@@ -234,7 +232,7 @@ angular.module('gpaApp')
       updateSelectedCampus();
       campuses.dynamicTheme(true);
       getFaculties();
-      // $scope.faculty = (null);
+      // $scope.campusFaculty.faculty = (null);
       updateSelectedFaculty(false);
       disableFacultySelect(null);
       $scope.combinedCumulativeFormulaIsCollapsed = false;
@@ -350,5 +348,7 @@ angular.module('gpaApp')
       courseRows.includeAll(booleanValue);
       updateGpaScopes();
     };
+
+    $scope.date = new Date();
 
   });

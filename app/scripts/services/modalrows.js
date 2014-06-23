@@ -1,7 +1,12 @@
 'use strict';
 
 angular.module('gpaApp')
-  .factory('modalRows', function () {
+  .factory('modalRows', function (
+    faculties,
+    courses,
+    levels,
+    qualityhoursValues
+    ) {
     // Service logic
     var modalRows, sanitize;
 
@@ -13,7 +18,6 @@ angular.module('gpaApp')
       // console.debug(index);
       modalRows.splice(index + 1, 0, {
         course                 :null,
-        courseType             :null,
         level                  :null,
         grade                  :null,
         qualityhoursValue      :null
@@ -27,7 +31,7 @@ angular.module('gpaApp')
     }
 
     function changeValue (rowObject, key, value) {
-      var index = modalRows.indexOf(rowObject);
+      var index = modalRows.indexOf(rowObject), levelIndex = {'index':null};
       switch (key) {
         case 'course':
           if (value === null) {
@@ -35,7 +39,13 @@ angular.module('gpaApp')
           }
           else {
             modalRows[index].course = value;
+            if (faculties.thisFaculty() !== 'Eng') {
+              modalRows[index].level = levels.selectedLevel(courses.courseLevel(value.number) - 1);
+              modalRows[index].qualityhoursValue = qualityhoursValues.selectedQualityhoursValue(courses.courseQualityHours(value.qualityHours));
+              console.debug(modalRows[index].qualityhoursValue);
+            }
           }
+          levelIndex = {'index':index};
           break;
         case 'term':
           if (value === null) {
@@ -43,14 +53,6 @@ angular.module('gpaApp')
           }
           else {
             modalRows[index].term = value;
-          }
-          break;
-        case 'courseType':
-          if (value === null) {
-            modalRows[index].courseType = null;
-          }
-          else {
-            modalRows[index].courseType = value;
           }
           break;
         case 'level':
@@ -78,6 +80,7 @@ angular.module('gpaApp')
           }
           break;
       }
+      return levelIndex;
     }
 
     function resetModalRows () {
@@ -85,7 +88,6 @@ angular.module('gpaApp')
         {
           course            :null,
           term              :null,
-          courseType        :null,
           level             :null,
           grade             :null,
           qualityhoursValue :null
@@ -98,17 +100,17 @@ angular.module('gpaApp')
       var i, count = 0;
       sanitize = [];
       for (i = 0; i < modalRows.length; i++) {
-        if ((modalRows[i].course === null || (typeof modalRows[i].course === 'undefined')) && (modalRows[i].term === null || (typeof modalRows[i].term === 'undefined')) && (modalRows[i].courseType === null || (typeof modalRows[i].courseType === 'undefined')) && (modalRows[i].level === null || (typeof modalRows[i].level === 'undefined')) && (modalRows[i].grade === null || (typeof modalRows[i].grade === 'undefined')) && (modalRows[i].qualityhoursValue === null || (typeof modalRows[i].qualityhoursValue === 'undefined'))) {
+        if ((modalRows[i].course === null || (typeof modalRows[i].course === 'undefined')) && (modalRows[i].term === null || (typeof modalRows[i].term === 'undefined')) && (modalRows[i].level === null || (typeof modalRows[i].level === 'undefined')) && (modalRows[i].grade === null || (typeof modalRows[i].grade === 'undefined')) && (modalRows[i].qualityhoursValue === null || (typeof modalRows[i].qualityhoursValue === 'undefined'))) {
           sanitize[i] = -1;
         }
-        else if (((modalRows[i].course !== null) && (typeof modalRows[i].course !== 'undefined')) && ((modalRows[i].term !== null) && (typeof modalRows[i].term !== 'undefined')) && ((modalRows[i].courseType !== null) && (typeof modalRows[i].courseType !== 'undefined')) && ((modalRows[i].level !== null) && (typeof modalRows[i].level !== 'undefined')) && ((modalRows[i].grade !== null) && (typeof modalRows[i].grade !== 'undefined')) && ((modalRows[i].qualityhoursValue !== null) && (typeof modalRows[i].qualityhoursValue !== 'undefined'))) {
+        else if (((modalRows[i].course !== null) && (typeof modalRows[i].course !== 'undefined')) && ((modalRows[i].term !== null) && (typeof modalRows[i].term !== 'undefined')) && ((modalRows[i].level !== null) && (typeof modalRows[i].level !== 'undefined')) && ((modalRows[i].grade !== null) && (typeof modalRows[i].grade !== 'undefined')) && ((modalRows[i].qualityhoursValue !== null) && (typeof modalRows[i].qualityhoursValue !== 'undefined'))) {
           sanitize[i] = 1;
         }
         else {
           sanitize[i] = 0;
           count = count + 1;
         }
-        // console.debug(modalRows[i].course+','+modalRows[i].term+','+modalRows[i].courseType+','+modalRows[i].level+','+modalRows[i].grade+','+modalRows[i].qualityhoursValue);
+        // console.debug(modalRows[i].course+','+modalRows[i].term+','+modalRows[i].level+','+modalRows[i].grade+','+modalRows[i].qualityhoursValue);
       }
       console.debug(sanitize);
       return count;

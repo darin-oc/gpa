@@ -11,22 +11,22 @@ angular.module('gpaApp')
 
       switch (design) {
         case 'design1':
-          chosenPattern = {view: 'default', layout: 'version1'};
+          chosenPattern = {view: 'default', layout: 'version4'};
           break;
         case 'design2':
-          chosenPattern = {view: 'default', layout: 'version2'};
+          chosenPattern = {view: 'openCampus', layout: 'version4'};
           break;
         case 'design3':
           chosenPattern = {view: 'default', layout: 'version3'};
           break;
         case 'design4':
-          chosenPattern = {view: 'default', layout: 'version4'};
+          chosenPattern = {view: 'default', layout: 'version1'};
           break;
         case 'design5':
-          chosenPattern = {view: 'openCampus', layout: 'version4'};
+          chosenPattern = {view: 'default', layout: 'version2'};
           break;
         default:
-          chosenPattern = {view: 'default', layout: 'version1'};
+          chosenPattern = {view: 'default', layout: 'version4'};
           break;
       }
 

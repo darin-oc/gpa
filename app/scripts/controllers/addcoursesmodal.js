@@ -10,17 +10,39 @@ angular.module('gpaApp')
     levels,
     grades,
     qualityhoursValues,
-    modalRows
+    modalRows,
+    faculties
     ) {
 
     modalRows.reset();
-    $scope.courses            = courses.collection();
-    $scope.terms              = terms.collection();
-    $scope.courseTypes        = courseTypes.collection();
-    $scope.levels             = levels.collection();
-    $scope.grades             = grades.collection();
-    $scope.qualityhoursValues = qualityhoursValues.collection();
-    $scope.modalRows          = modalRows.collection();
+    $scope.courses             = courses.collection();
+    $scope.terms               = terms.collection();
+    $scope.levels              = levels.collection();
+    $scope.grades              = grades.collection();
+    $scope.qualityhoursValues  = qualityhoursValues.collection();
+    $scope.modalRows           = modalRows.collection();
+    $scope.rowLevel            = {
+      level: [],
+      qualityhoursValue: []
+    };
+    $scope.disableLevel        = false;
+    $scope.disableQualityHours = false;
+
+    function getModalRowsValues () {
+      var modalRowsCollection;
+      modalRowsCollection = modalRows.collection();
+      for (var i = 0; i < modalRowsCollection.length; i++) {
+        $scope.rowLevel.level[i] = modalRowsCollection[i].level;
+        $scope.rowLevel.qualityhoursValue[i] = modalRowsCollection[i].qualityhoursValue;
+      }
+    }
+
+    getModalRowsValues();
+
+    if (faculties.thisFaculty() !== 'Eng') {
+      $scope.disableLevel        = true;
+      $scope.disableQualityHours = true;
+    }
 
     $scope.addModalRowBelow = function (afterThisRow) {
       $scope.incomplete = false;
@@ -31,11 +53,17 @@ angular.module('gpaApp')
     $scope.removeModalRow = function (rowToRemove) {
       $scope.incomplete = false;
       modalRows.removeRow(rowToRemove);
+      getModalRowsValues();
     };
 
     $scope.change = function (rowObject, key, value) {
+      var levelIndex;
       $scope.incomplete = false;
-      modalRows.changeRowValue(rowObject, key, value);
+      levelIndex = modalRows.changeRowValue(rowObject, key, value);
+      console.debug($scope.level);
+      console.debug(modalRows.collection());
+      getModalRowsValues();
+      console.debug($scope.rowLevel);
     };
 
     $scope.valid = 'modal-select';

@@ -10,7 +10,7 @@
           <table id="coursegrades" class="table table-hover table-condensed table-striped gridform">
             <tbody>
               <tr>
-                <th colspan="6">
+                <th colspan="5">
                   <i><strong>Hint: </strong>Click on the green <span class="text-success fa fa-plus-circle"></span> circle to add an additional course</i>
                 </th>
                 <th class="text-center">Delete</th>
@@ -27,24 +27,19 @@
                     <option value="">When was course taken?</option>
                   </select>
                 </td>
-                <td id="modal-type">
-                  <select class="form-control" ng-class="{'modal-select': courseType!=null}" tabindex="-1" ng-model="courseType" ng-options="courseType.name for courseType in courseTypes" ng-change="change(modalRow, 'courseType', courseType)">
-                    <option value="">Type</option>
-                  </select>
-                </td>
-                <td id="modal-level">
-                  <select class="form-control" ng-class="{'modal-select': level!=null}" tabindex="-1" ng-model="level" ng-options="level.name for level in levels" ng-change="change(modalRow, 'level', level)">
-                    <option value="">Level</option>
-                  </select>
-                </td>
                 <td id="modal-grade">
                   <select class="form-control" ng-class="{'modal-select': grade!=null}" tabindex="-1" ng-model="grade" ng-options="grade.name for grade in grades" ng-change="change(modalRow, 'grade', grade)">
                     <option value="">Grade</option>
                   </select>
                 </td>
+                <td id="modal-level">
+                  <select class="form-control" ng-class="{'modal-select': rowLevel.level[$index]!=null}" tabindex="-1" ng-model="rowLevel.level[$index]" ng-options="level.name for level in levels" ng-change="change(modalRow, 'level', level)" ng-disabled="disableLevel">
+                    <option value="">Level</option>
+                  </select>
+                </td>
                 <td id="modal-qualityhrs">
-                  <select class="form-control" ng-class="{'modal-select': qualityhoursValue!=null}" tabindex="-1" ng-model="qualityhoursValue" ng-options="qualityhoursValue.qualityHours for qualityhoursValue in qualityhoursValues" ng-change="change(modalRow, 'qualityhoursValue', qualityhoursValue)">
-                    <option value="">Quality Hrs</option>
+                  <select class="form-control" ng-class="{'modal-select': rowLevel.qualityhoursValue[$index]!=null}" tabindex="-1" ng-model="rowLevel.qualityhoursValue[$index]" ng-options="qualityhoursValue.qualityHours for qualityhoursValue in qualityhoursValues" ng-change="change(modalRow, 'qualityhoursValue', qualityhoursValue)" ng-disabled="disableQualityHours">
+                    <option value="">Credit Hours</option>
                   </select>
                 </td>
                 <td class="gridaction add" id="modal-minus" ng-click="removeModalRow(modalRow)">
