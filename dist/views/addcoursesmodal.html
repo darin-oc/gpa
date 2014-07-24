@@ -33,12 +33,12 @@
                   </select>
                 </td>
                 <td id="modal-level">
-                  <select class="form-control" ng-class="{'modal-select': rowLevel.level[$index]!=null}" tabindex="-1" ng-model="rowLevel.level[$index]" ng-options="level.name for level in levels" ng-change="change(modalRow, 'level', level)" ng-disabled="disableLevel">
+                  <select class="form-control" ng-class="{'modal-select': rowLevel.level[$index]!=null}" tabindex="-1" ng-model="rowLevel.level[$index]" ng-options="level.name for level in levels" ng-change="change(modalRow, 'level', rowLevel.level[$index])" ng-disabled="disableLevel">
                     <option value="">Level</option>
                   </select>
                 </td>
                 <td id="modal-qualityhrs">
-                  <select class="form-control" ng-class="{'modal-select': rowLevel.qualityhoursValue[$index]!=null}" tabindex="-1" ng-model="rowLevel.qualityhoursValue[$index]" ng-options="qualityhoursValue.qualityHours for qualityhoursValue in qualityhoursValues" ng-change="change(modalRow, 'qualityhoursValue', qualityhoursValue)" ng-disabled="disableQualityHours">
+                  <select class="form-control" ng-class="{'modal-select': rowLevel.qualityhoursValue[$index]!=null}" tabindex="-1" ng-model="rowLevel.qualityhoursValue[$index]" ng-options="qualityhoursValue.name for qualityhoursValue in qualityhoursValues" ng-change="change(modalRow, 'qualityhoursValue', rowLevel.qualityhoursValue[$index])" ng-disabled="disableQualityHours">
                     <option value="">Credit Hours</option>
                   </select>
                 </td>

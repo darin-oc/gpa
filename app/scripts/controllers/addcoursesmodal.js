@@ -48,6 +48,7 @@ angular.module('gpaApp')
       $scope.incomplete = false;
       // console.debug(afterThisRow);
       modalRows.addRow(afterThisRow);
+      getModalRowsValues();
     };
 
     $scope.removeModalRow = function (rowToRemove) {
@@ -60,10 +61,8 @@ angular.module('gpaApp')
       var levelIndex;
       $scope.incomplete = false;
       levelIndex = modalRows.changeRowValue(rowObject, key, value);
-      console.debug($scope.level);
-      console.debug(modalRows.collection());
       getModalRowsValues();
-      console.debug($scope.rowLevel);
+      // console.debug($scope.rowLevel);
     };
 
     $scope.valid = 'modal-select';

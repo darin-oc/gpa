@@ -42,7 +42,7 @@ angular.module('gpaApp')
             if (faculties.thisFaculty() !== 'Eng') {
               modalRows[index].level = levels.selectedLevel(courses.courseLevel(value.number) - 1);
               modalRows[index].qualityhoursValue = qualityhoursValues.selectedQualityhoursValue(courses.courseQualityHours(value.qualityHours));
-              console.debug(modalRows[index].qualityhoursValue);
+              // console.debug(modalRows[index].qualityhoursValue);
             }
           }
           levelIndex = {'index':index};

@@ -24,8 +24,7 @@ angular.module('gpaApp')
     terms,
     configurations,
     student,
-    layouts,
-    sessionUser
+    layouts
     ) {
 
     $scope.campuses = campuses.collection();
@@ -178,30 +177,17 @@ angular.module('gpaApp')
         $scope.campusFaculty.faculty    = (faculties.defaultFaculty(config.defaultFaculty));
         updateSelectedFaculty(config.defaultFaculty);
         disableFacultySelect(config.defaultCampus);
-      });
-
-      sessionUser.userId(config.userURI)
-      .then(function (id) {
+      })
+      .then(function () {
         var studentURI;
-        console.debug(id);
-        if (id.id === '') {
+        console.debug($location.$$search.id);
+        if (typeof $location.$$search.id === 'undefined') {
           studentURI = config.studentProgrammeRecordURI;
         }
         else {
-          studentURI = config.studentProgrammeRecordURI + '/id/' + id.id;
+          studentURI = config.studentProgrammeRecordURI + '/id/' + $location.$$search.id;
         }
         student.courseRowInformation(studentURI)
-        .then(function (courseRowsArray) {
-          if (courseRows.collection().length === 0) {
-            courseRows.addArray(courseRowsArray);
-          }
-        })
-        .then(function () {
-          updateGpaScopes();
-        });
-      }, function (error) {
-        console.dir(error);
-        student.courseRowInformation(config.studentProgrammeRecordURI)
         .then(function (courseRowsArray) {
           if (courseRows.collection().length === 0) {
             courseRows.addArray(courseRowsArray);
