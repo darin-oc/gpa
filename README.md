@@ -6,7 +6,8 @@ Written by Darin Brathwaite (darin.brathwaite@open.uwi.edu) and Reiza Haniff (re
 
 Maintained by Darin Brathwaite (darin.brathwaite@open.uwi.edu).
 
-## Usage/Installation
+## Usage / Installation
+This GPA calculator is a client-side application written in JavaScript. This means that there is no server-side language processing and it has a very small server-side overhead. All you need to do is to place the directory on your web server. The foot print of this app is less than 10 MB on the web server.
 The `/app` directory contains all the raw files for the application. The `/dist` directory contains the minified version of the application. Minified files means faster loading of the application by clients.
 
 To install, place the files and folders of **either** `/app` or `/dist` in the public facing directory of your web server.
