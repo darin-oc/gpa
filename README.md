@@ -6,8 +6,10 @@ Written by Darin Brathwaite (darin.brathwaite@open.uwi.edu) and Reiza Haniff (re
 
 Maintained by Darin Brathwaite (darin.brathwaite@open.uwi.edu).
 
-## Usage
-The `/app` directory contains all the raw files for the application. The `/dist` directory contains the minified version of the application. Minified files means faster loading of the application by clients. Place the files and folders of either `/app` or `/dist` in the public facing directory of your web server.
+## Usage/Installation
+The `/app` directory contains all the raw files for the application. The `/dist` directory contains the minified version of the application. Minified files means faster loading of the application by clients.
+
+To install, place the files and folders of **either** `/app` or `/dist` in the public facing directory of your web server.
 
 ## Configuration
 Use the **config.json** file to configure the default settings of the app. The instructions for each **"setting"** can found in the **"_comment_setting"**. For example, the instructions for setting the `"defaultCampus"` can be found in `"_comment_defaultCampus"`.
