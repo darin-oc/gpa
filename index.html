@@ -3,140 +3,234 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=640" />
-
-    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
-    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
-
-    <script type="text/javascript" src="javascripts/modernizr.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('#main_content').headsmart()
-      })
-    </script>
-    <title>Gpa by darin-oc</title>
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>GPA Comparison Calculator by darin-oc</title>
   </head>
 
   <body>
-    <a id="forkme_banner" href="https://github.com/darin-oc/gpa">View on GitHub</a>
-    <div class="shell">
+    <div id="container">
+      <div class="inner">
 
-      <header>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <h1>GPA Conversion Calculator</h1>
-            <h2>Comparing the old and new GPA schemes</h2>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-      </header>
+        <header>
+          <h1>GPA Comparison Calculator</h1>
+          <h2>Comparing the old and new GPA schemes</h2>
+        </header>
 
-      <section id="downloads">
-        <span class="inner">
-          <a href="https://github.com/darin-oc/gpa/releases/download/1.0.7/dist.zip" class="zip"><em>download</em> dist.ZIP</a><a href="https://github.com/darin-oc/gpa/releases/download/1.0.7/dist.zip" class="tgz"><em>download</em> dist.ZIP</a>
-        </span>
-      </section>
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/darin-oc/gpa/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/darin-oc/gpa/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/darin-oc/gpa" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
 
+        <hr>
 
-      <span class="banner-fix"></span>
+        <section id="main_content">
+          <h1>
+<a name="gpa-comparison-calculator" class="anchor" href="#gpa-comparison-calculator"><span class="octicon octicon-link"></span></a>GPA Comparison Calculator</h1>
 
-
-      <section id="main_content">
-
+<blockquote>
 <p>The Board of Undergraduate Studies introduces a revised Grade Point Average (GPA) effective Semester I 2014/2015. Visit the <a href="http://www.uwi.edu/undergraduatestudies/gpascheme.aspx">http://www.uwi.edu/undergraduatestudies/gpascheme.aspx</a> page to learn about the changes and the benefits.</p>
+</blockquote>
+
 <p>Written by Darin Brathwaite (<a href="mailto:darin.brathwaite@open.uwi.edu">darin.brathwaite@open.uwi.edu</a>) and Reiza Haniff (<a href="mailto:reiza.haniff@open.uwi.edu">reiza.haniff@open.uwi.edu</a>).</p>
+
 <p>Maintained by Darin Brathwaite (<a href="mailto:darin.brathwaite@open.uwi.edu">darin.brathwaite@open.uwi.edu</a>).</p>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Usage / Installation</h3>
+<h2>
+<a name="usageinstallation" class="anchor" href="#usageinstallation"><span class="octicon octicon-link"></span></a>Usage/Installation</h2>
 
-<p>This GPA calculator is a client-side application written in JavaScript. This means that there is <strong>no server-side language processing and it has a very small server-side overhead</strong>. All you need to do is to place the directory on your web server. The foot print of this app is less than 10 MB on the web server. The <code>/dist</code> directory contains the minified version of the application. Minified files means faster loading of the application by clients.
+<p>The <code>/app</code> directory contains all the raw files for the application. The <code>/dist</code> directory contains the minified version of the application. Minified files means faster loading of the application by clients.</p>
 
-To install, just place the files and folders of <code>/dist</code> in the public facing directory of your web server.</p>
+<p>To install, place the files and folders of <strong>either</strong> <code>/app</code> or <code>/dist</code> in the public facing directory of your web server.</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Configuration</h3>
+<h2>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
 
-<p>Use the <strong>config.json</strong> file to configure the default settings of the app. The instructions for each <strong>"setting"</strong> can found in the <strong>"_comment_setting"</strong>. For example, the instructions for setting the <code>"defaultCampus"</code> can be found in <code>"_comment_defaultCampus"</code>.
+<p>Use the <strong>config.json</strong> file to configure the default settings of the app. The instructions for each <strong>"setting"</strong> can found in the <strong>"_comment_setting"</strong>. For example, the instructions for setting the <code>"defaultCampus"</code> can be found in <code>"_comment_defaultCampus"</code>.</p>
 
-<pre><code>"_comment_defaultCampus"  : "Can be set to null, open, mona, cave or sta",
-"defaultCampus"           : "open",
-</code></pre>
-<code>"studentProgrammeRecordURI"</code> is used to automatically load student's programme records if your student management system has a web services API. <code>"studentProgrammeRecordURI"</code> expects the response to be in json format. 
-An example of the expected json response is shown below (also see the example.json file).
+<div class="highlight highlight-json"><pre><span class="s2">"_comment_defaultCampus"</span>  <span class="err">:</span> <span class="s2">"Can be set to null, open, mona, cave or sta"</span><span class="err">,</span>
+<span class="s2">"defaultCampus"</span>           <span class="err">:</span> <span class="s2">"open"</span><span class="err">,</span>
+</pre></div>
 
-<pre><code>{
-  "sar": [
-    {
-      "term_code": "201210",
-      "course_code": "ACCT1002",
-      "course_type_name": "Core",
-      "grade": "B",
-      "grade_point": "9",
-      "program_levels_name": "Level 1",
-      "quality_hours": "3",
-      "quality_points": "3"
-    },
-    {
-      "term_code": "201220",
-      "course_code": "ECON1003",
-      "course_type_name": "Core",
-      "grade": "C-",
-      "grade_point": "5.1",
-      "program_levels_name": "Level 1",
-      "quality_hours": "3",
-      "quality_points": "1.7"
-    }
-  ]
-}
-</code></pre>
-<code>"coursesURI"</code> is used to load all of the courses you wish to appear in the app. This can be from a json response from your student management system or a .json file in the app itself. <code>"coursesURI"</code> expects the response to contain an array named <code>"courses"</code> and each object is a course with <code>"name"</code> and <code>"group"</code>. The <code>"group"</code> value is the course's prefix and is used to group the courses in the option select menu for Course in the app.</p>
+<p><code>"studentProgrammeRecordURI"</code> is used to automatically load student's programme records if your student management system has a web services API. <code>"studentProgrammeRecordURI"</code> expects the response to be in json format. 
+An example of the expected json response is shown below (also see the example.json file).</p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>How to use the app</h3>
+<div class="highlight highlight-json"><pre><span class="p">{</span>
+  <span class="nt">"sar"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">"term_code"</span><span class="p">:</span> <span class="s2">"201210"</span><span class="p">,</span>
+      <span class="nt">"course_code"</span><span class="p">:</span> <span class="s2">"ACCT1002"</span><span class="p">,</span>
+      <span class="nt">"course_type_name"</span><span class="p">:</span> <span class="s2">"Core"</span><span class="p">,</span>
+      <span class="nt">"grade"</span><span class="p">:</span> <span class="s2">"B"</span><span class="p">,</span>
+      <span class="nt">"grade_point"</span><span class="p">:</span> <span class="s2">"9"</span><span class="p">,</span>
+      <span class="nt">"program_levels_name"</span><span class="p">:</span> <span class="s2">"Level 1"</span><span class="p">,</span>
+      <span class="nt">"quality_hours"</span><span class="p">:</span> <span class="s2">"3"</span><span class="p">,</span>
+      <span class="nt">"quality_points"</span><span class="p">:</span> <span class="s2">"3"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">"term_code"</span><span class="p">:</span> <span class="s2">"201220"</span><span class="p">,</span>
+      <span class="nt">"course_code"</span><span class="p">:</span> <span class="s2">"ECON1003"</span><span class="p">,</span>
+      <span class="nt">"course_type_name"</span><span class="p">:</span> <span class="s2">"Core"</span><span class="p">,</span>
+      <span class="nt">"grade"</span><span class="p">:</span> <span class="s2">"C-"</span><span class="p">,</span>
+      <span class="nt">"grade_point"</span><span class="p">:</span> <span class="s2">"5.1"</span><span class="p">,</span>
+      <span class="nt">"program_levels_name"</span><span class="p">:</span> <span class="s2">"Level 1"</span><span class="p">,</span>
+      <span class="nt">"quality_hours"</span><span class="p">:</span> <span class="s2">"3"</span><span class="p">,</span>
+      <span class="nt">"quality_points"</span><span class="p">:</span> <span class="s2">"1.7"</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
 
-<p>
+<p><code>"coursesURI"</code> is used to load all of the courses you wish to appear in the app. This can be from a json response from your student management system or a .json file in the app itself. <code>"coursesURI"</code> expects the response to contain an array named <code>"courses"</code> and each object is a course with <code>"name"</code> and <code>"group"</code>. The <code>"group"</code> value is the course's prefix and is used to group the courses in the option select menu for Course in the app.</p>
+
+<h2>
+<a name="how-to-use-the-app" class="anchor" href="#how-to-use-the-app"><span class="octicon octicon-link"></span></a>How to use the app</h2>
+
 <ol>
-  <li>Select a Campus and a Faculty if available</li>
-  <li>Click on the Add Course button to add courses and grades to the list</li>
-  <li>
-    In the Add your courses window, each row represents a course.
-    <ul>Select all the values for a particular course. Each selection will turn green when a valule is selected.</ul>
-    <ul>To add another course click the green circle with the plus sign</ul>
-    <ul>To delete a course click the red circle with the minus sign</ul>
-    <ul>Save the selected courses to add them to the calculator</ul>
-  </li>
-  <li>To remove a course from the calculator click on the red circle with the cross</li>
-  <li>To Exclude a course from the calculations uncheck the check box to the left of the course</li>
-  <li>The results for Prior GPA Scheme and Current GPA Scheme along with the Combined GPAs are shown below the courses</li>
-  <li>To learn how the combined GPAs were calculated click on the formula's name</li>
-</ol>
-</p>
+<li>Select a <strong>Campus</strong> and a <strong>Faculty</strong> if available</li>
+<li>Click on the <strong>Add Course</strong> button to add courses and grades to the list</li>
+<li>In the <strong>Add your courses</strong> window, each row represents a course. 
+
+<ul>
+<li>Select all the values for a particular course. Each selection will turn green when a valule is selected. </li>
+<li>To add another course click the green circle with the plus sign</li>
+<li>To delete a course click the red circle with the minus sign</li>
+<li>Save the selected courses to add them to the calculator</li>
+</ul>
+</li>
+<li>To remove a course from the calculator click on the red circle with the cross</li>
+<li>To Exclude a course from the calculations uncheck the check box to the left of the course</li>
+<li>The results for <strong>Prior GPA Scheme</strong> and <strong>Current GPA Scheme</strong> along with the <strong>Combined GPAs</strong> are shown below the courses</li>
+<li>To learn how the combined GPAs were calculated click on the formula's name</li>
+</ol><h2>
+<a name="dealing-with-javascripts-floating-point-precision" class="anchor" href="#dealing-with-javascripts-floating-point-precision"><span class="octicon octicon-link"></span></a>Dealing with javascript's floating point precision</h2>
+
+<p>Javascript's floating point precision issues are well documented <a href="http://stackoverflow.com/questions/11695618/dealing-with-float-precision-in-javascript">http://stackoverflow.com/questions/11695618/dealing-with-float-precision-in-javascript</a> . To work around this, the <strong>big.js</strong> library <a href="http://mikemcl.github.io/big.js/">http://mikemcl.github.io/big.js/</a> is used for all calculations in the GPA calculator.</p>
+
+<h2>
+<a name="formulas-used-in-calulations" class="anchor" href="#formulas-used-in-calulations"><span class="octicon octicon-link"></span></a>Formulas used in calulations</h2>
 
 <h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>License</h3>
+<a name="gpa-conversion" class="anchor" href="#gpa-conversion"><span class="octicon octicon-link"></span></a>GPA conversion</h3>
 
-<p>GNU General Public License</p>
-      </section>
+<table>
+<thead><tr>
+<th>Class</th>
+<th>Formula</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Upper Class</strong></td>
+<td>newGpa = oldGpa</td>
+</tr>
+<tr>
+<td><strong>Upper Second</strong></td>
+<td>newGpa = ((49 * oldGpa) + 149.5) / 99</td>
+</tr>
+<tr>
+<td><strong>Lower Second</strong></td>
+<td>newGpa = ((49 * oldGpa) + 149) / 99</td>
+</tr>
+<tr>
+<td><strong>Pass</strong></td>
+<td>newGpa = (199 * oldGpa) / 99</td>
+</tr>
+</tbody>
+</table><div class="highlight highlight-js"><pre><span class="nx">convertOldToNewGpaUsingFormula</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">oldGpa</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">oldGpa</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">2.99</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">oldGpa</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">oldGpa</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">2.99</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">oldGpa</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1.99</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// ((49 * oldGpa) + 149.5) / 99</span>
+    <span class="k">return</span> <span class="p">((</span><span class="k">new</span> <span class="nx">Big</span><span class="p">(</span><span class="mi">49</span><span class="p">).</span><span class="nx">times</span><span class="p">(</span><span class="nx">oldGpa</span><span class="p">)).</span><span class="nx">plus</span><span class="p">(</span><span class="mf">149.5</span><span class="p">)).</span><span class="nx">div</span><span class="p">(</span><span class="mi">99</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">oldGpa</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">1.99</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">oldGpa</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.99</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// ((49 * oldGpa) + 149) / 99</span>
+    <span class="k">return</span> <span class="p">((</span><span class="k">new</span> <span class="nx">Big</span><span class="p">(</span><span class="mi">49</span><span class="p">).</span><span class="nx">times</span><span class="p">(</span><span class="nx">oldGpa</span><span class="p">)).</span><span class="nx">plus</span><span class="p">(</span><span class="mi">149</span><span class="p">)).</span><span class="nx">div</span><span class="p">(</span><span class="mi">99</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">oldGpa</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">0.99</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// (199 * oldGpa) / 99</span>
+    <span class="k">return</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Big</span><span class="p">(</span><span class="mi">199</span><span class="p">).</span><span class="nx">times</span><span class="p">(</span><span class="nx">oldGpa</span><span class="p">)).</span><span class="nx">div</span><span class="p">(</span><span class="mi">99</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 
-      <footer>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <p>this project by <a href="https://github.com/darin-oc">darin-oc</a> can be found on <a href="https://github.com/darin-oc/gpa">GitHub</a></p>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
-        <span class="octocat"></span>
-      </footer>
+<h3>
+<a name="grade-points" class="anchor" href="#grade-points"><span class="octicon octicon-link"></span></a>Grade points</h3>
 
+<p>gradePoints = qualityHours * qualityPoints</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">function</span> <span class="nx">calculate</span> <span class="p">(</span><span class="nx">qualityHours</span><span class="p">,</span> <span class="nx">qualityPoints</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">gradePoints</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">qualityHours</span> <span class="o">&amp;&amp;</span> <span class="nx">qualityPoints</span><span class="p">){</span>
+    <span class="c1">// qualityHours * qualityPoints</span>
+    <span class="nx">gradePoints</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Big</span><span class="p">(</span><span class="nx">qualityHours</span><span class="p">).</span><span class="nx">times</span><span class="p">(</span><span class="nx">qualityPoints</span><span class="p">);</span>
+    <span class="nx">gradePoints</span> <span class="o">=</span> <span class="nx">gradePoints</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">{</span>
+    <span class="nx">gradePoints</span> <span class="o">=</span> <span class="mf">0.00</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">gradePoints</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>
+<a name="gpa" class="anchor" href="#gpa"><span class="octicon octicon-link"></span></a>GPA</h3>
+
+<p>gpa = oldGpaTotalGradePoints / oldGpaTotalQualityHours</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">function</span> <span class="nx">gpaCalculation</span> <span class="p">(</span><span class="nx">oldGpaTotalGradePoints</span><span class="p">,</span> <span class="nx">oldGpaTotalQualityHours</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">gpa</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">oldGpaTotalGradePoints</span> <span class="o">&amp;&amp;</span> <span class="nx">oldGpaTotalQualityHours</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">oldGpaTotalGradePoints</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">oldGpaTotalQualityHours</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)){</span>
+    <span class="c1">// oldGpaTotalGradePoints / oldGpaTotalQualityHours</span>
+    <span class="nx">gpa</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Big</span><span class="p">(</span><span class="nx">oldGpaTotalGradePoints</span><span class="p">).</span><span class="nx">div</span><span class="p">(</span><span class="k">new</span> <span class="nx">Big</span><span class="p">(</span><span class="nx">oldGpaTotalQualityHours</span><span class="p">));</span>
+  <span class="p">}</span>
+  <span class="k">else</span><span class="p">{</span>
+    <span class="nx">gpa</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">gpa</span> <span class="o">=</span> <span class="nx">gpa</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">gpa</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>
+<a name="combined-gpa" class="anchor" href="#combined-gpa"><span class="octicon octicon-link"></span></a>Combined GPA</h3>
+
+<p>combinedGpa = (priorGpaProduct + currentGpaProduct) / (totalHours)</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">function</span> <span class="nx">combinedGpaFormula</span> <span class="p">(</span><span class="nx">priorGpaHours</span><span class="p">,</span> <span class="nx">priorGpa</span><span class="p">,</span> <span class="nx">currentGpaHours</span><span class="p">,</span> <span class="nx">currentGpa</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">combinedGpa</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">fixedCombinedGpa</span><span class="p">,</span> <span class="nx">priorGpaProduct</span><span class="p">,</span> <span class="nx">currentGpaProduct</span><span class="p">,</span> <span class="nx">totalHours</span><span class="p">;</span>
+
+  <span class="nx">totalHours</span> <span class="o">=</span> <span class="nx">priorGpaHours</span> <span class="o">+</span> <span class="nx">currentGpaHours</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">((</span><span class="k">typeof</span> <span class="nx">totalHours</span> <span class="o">===</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="nx">totalHours</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">totalHours</span><span class="p">))</span> <span class="o">||</span> <span class="p">(</span><span class="nx">totalHours</span> <span class="o">===</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">combinedGpa</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">priorGpaProduct</span>   <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Big</span><span class="p">(</span><span class="nx">priorGpaHours</span><span class="p">).</span><span class="nx">times</span><span class="p">(</span><span class="nx">priorGpa</span><span class="p">)).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="nx">currentGpaProduct</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Big</span><span class="p">(</span><span class="nx">currentGpaHours</span><span class="p">).</span><span class="nx">times</span><span class="p">(</span><span class="nx">currentGpa</span><span class="p">)).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="nx">combinedGpa</span>       <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Big</span><span class="p">(</span><span class="nx">priorGpaProduct</span><span class="p">).</span><span class="nx">plus</span><span class="p">(</span><span class="nx">currentGpaProduct</span><span class="p">)).</span><span class="nx">div</span><span class="p">(</span><span class="k">new</span> <span class="nx">Big</span><span class="p">(</span><span class="nx">totalHours</span><span class="p">));</span>
+  <span class="p">}</span>
+  <span class="nx">fixedCombinedGpa</span> <span class="o">=</span> <span class="nx">combinedGpa</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">fixedCombinedGpa</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>
+<a name="gnu-general-public-license" class="anchor" href="#gnu-general-public-license"><span class="octicon octicon-link"></span></a>GNU General Public License</h3>
+        </section>
+
+        <footer>
+          GPA Comparison Calculator is maintained by <a href="https://github.com/darin-oc">darin-oc</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
     </div>
-
-    
   </body>
 </html>
