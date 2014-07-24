@@ -70,15 +70,13 @@ To install, place the files and folders of <code>/dist</code> in the public faci
 
 <p>Use the <strong>config.json</strong> file to configure the default settings of the app. The instructions for each <strong>"setting"</strong> can found in the <strong>"_comment_setting"</strong>. For example, the instructions for setting the <code>"defaultCampus"</code> can be found in <code>"_comment_defaultCampus"</code>.
 
-<pre><code>
-"_comment_defaultCampus"  : "Can be set to null, open, mona, cave or sta",
+<pre><code>"_comment_defaultCampus"  : "Can be set to null, open, mona, cave or sta",
 "defaultCampus"           : "open",
 </code></pre>
 <code>"studentProgrammeRecordURI"</code> is used to automatically load student's programme records if your student management system has a web services API. <code>"studentProgrammeRecordURI"</code> expects the response to be in json format. 
 An example of the expected json response is shown below (also see the example.json file).
 
-<pre><code>
-{
+<pre><code>{
   "sar": [
     {
       "term_code": "201210",
@@ -106,9 +104,25 @@ An example of the expected json response is shown below (also see the example.js
 <code>"coursesURI"</code> is used to load all of the courses you wish to appear in the app. This can be from a json response from your student management system or a .json file in the app itself. <code>"coursesURI"</code> expects the response to contain an array named <code>"courses"</code> and each object is a course with <code>"name"</code> and <code>"group"</code>. The <code>"group"</code> value is the course's prefix and is used to group the courses in the option select menu for Course in the app.</p>
 
 <h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>How to use the app</h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>
+<ol>
+  <li>Select a Campus and a Faculty if available</li>
+  <li>Click on the Add Course button to add courses and grades to the list</li>
+  <li>
+    In the Add your courses window, each row represents a course.
+    <ul>Select all the values for a particular course. Each selection will turn green when a valule is selected.</ul>
+    <ul>To add another course click the green circle with the plus sign</ul>
+    <ul>To delete a course click the red circle with the minus sign</ul>
+    <ul>Save the selected courses to add them to the calculator</ul>
+  </li>
+  <li>To remove a course from the calculator click on the red circle with the cross</li>
+  <li>To Exclude a course from the calculations uncheck the check box to the left of the course</li>
+  <li>The results for Prior GPA Scheme and Current GPA Scheme along with the Combined GPAs are shown below the courses</li>
+  <li>To learn how the combined GPAs were calculated click on the formula's name</li>
+</ol>
+</p>
 
 <h3>
 <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
