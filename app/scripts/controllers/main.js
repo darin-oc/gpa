@@ -200,9 +200,31 @@ angular.module('gpaApp')
 
       courses.coursesRest(config.coursesURI, $scope.courses).$promise
       .then(function (response) {
-        var coursesArray = response.courses;
+        var courseName, qH, coursesArray = response.courses, letter = /^[a-zA-Z]+$/;
         for (var i = 0; i < coursesArray.length; i++) {
-          $scope.courses.push(coursesArray[i]);
+          if (coursesArray[i][0]) {
+            courseName = coursesArray[i][0];
+            for (var j = 0; j < courseName.length; j++) {
+              if (!courseName.charAt(j).match(letter)) {
+                if (typeof coursesArray[i][1] !== 'undefined') {
+                  qH = coursesArray[i][1];
+                }
+                else {
+                  qH = "3";
+                }
+                $scope.courses.push({
+                  name         : courseName,
+                  group        : courseName.slice(0,j),
+                  number       : courseName.slice(j),
+                  qualityHours : qH
+                });
+                break;
+              }
+            }
+          }
+          else {
+            $scope.courses.push(coursesArray[i]);
+          }
         }
       });
 
