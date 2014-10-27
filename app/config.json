@@ -1,7 +1,7 @@
 {
   "name"                    : "GPA Comparison Calculator",
   "description"             : "The Board of Undergraduate Studies introduces a revised Grade Point Average (GPA) effective Semester I 2014/2015. Visit the http://www.uwi.edu/undergraduatestudies/gpascheme.aspx page to learn about the changes and the benefits.",
-  "version"                 : "1.0.9",
+  "version"                 : "1.0.10",
   "authors"                 : [
     {
       "name"                : "Darin Brathwaite",
