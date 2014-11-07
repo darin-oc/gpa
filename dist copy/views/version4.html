@@ -1,0 +1,369 @@
+<!-- default version -->
+<div>
+  <div class="row">
+    <div class="col-md-12">
+      <div ng-switch on="campusView">
+        <div ng-switch-when="default">
+          <div ng-include='"views/defaultsectiontitleversion2.html"'></div>
+        </div>
+        <div ng-switch-when="openCampus">
+          <div ng-include='"views/openversion2.html"'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" id="addcourses" class="btn btn-success" ng-click="addCoursesModal()"><i class="fa fa-plus-circle"></i> Add Courses</button>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-md-4">
+      <span class="text-muted"><i class="text-danger fa fa-backward"></i> - Course taken before the Semester I 2014/2015 GPA revision</span>
+    </div>
+    <div class="col-md-4">
+      <span class="text-muted"><i class="text-success fa fa-forward"></i> - Course taken after the Semester I 2014/2015 GPA revision</span>
+    </div>
+  </div><br>
+  <div class="alert alert-danger alert-dismissable" ng-if="optionAlert">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>Missing option!</strong> Choose all options before adding course to list
+  </div>
+  <div class="row">
+    <div class="col-md-8 table-responsive" id="coursesandgrades">
+      <strong>Courses and Grades</strong>
+
+      <table class="table table-hover table-bordered table-condensed gridform">
+
+        <tbody>
+          <tr class="gridheadspacer" ng-class="theme.table">
+            <th class="text-center">
+              <span class="dropdown" is-open="status.isopen">
+                <a href class="dropdown-toggle">Include <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a ng-click="includeAll(true)">All</a></li>
+                  <li><a ng-click="includeAll(false)">None</a></li>
+                </ul>
+              </span>
+            </th>
+            <th class="text-center">
+              Course
+            </th>
+            <th class="text-center">
+              Period
+            </th>
+            <th class="text-center">
+              Grade
+            </th>
+            <th class="text-center">
+              Level
+            </th>
+            <th class="text-center">
+              Credit Hours
+            </th>
+            <th class="text-center" id="remove">
+              Remove Row
+            </th>
+          </tr>
+          <tr ng-if="courseRows.length===0">
+            <td colspan="8" class="text-center text-muted"><i>Click on the "Add Courses" button to add your courses</i></td>
+          </tr>
+          <tr ng-repeat="courseRow in courseRows" ng-class="[changeBackgroundColour(courseRow), newCourseRow(courseRow)]">
+            <td class="includeicon">
+              <input type="checkbox" ng-model="courseRow.include" class="switch-small" ng-change="includeCourse(courseRow)">&nbsp;&nbsp;&nbsp;&nbsp;<i ng-if="courseRow.fromWebService" class="text-info fa fa-database" title="Automatically entered" tooltip="Data from student system" tooltip-placement="right"></i><i ng-if="!courseRow.fromWebService" class="fa fa-graduation-cap" title="Manually entered" tooltip="Manually added course" tooltip-placement="right"></i>
+            </td>
+            <td class="text-center">{{courseRow.course}}</td>
+            <td class="termicon"><i class="{{courseRow.term.icon}}" tooltip="{{courseRow.term.title}}"></i></td>
+            <td class="text-center">{{courseRow.grade}}</td>
+            <td class="text-center">{{courseRow.level}}</td>
+            <td class="text-center">{{courseRow.qualityhoursValue}}</td>
+            <td class="gridaction removerow" ng-click="removeCourse(courseRow)">
+              <i class="text-danger fa fa-times-circle" title="Remove" tooltip="Remove"></i></td>
+          </tr>
+          <tr class="active footerrow">
+            <td></td>
+            <td colspan="4">
+              <strong>Totals</strong>
+            </td>
+            <td class="text-center">{{totalQualityHours | number:2}}</td>
+
+            <td class="gridsummary">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="col-md-2 table-responsive" id="priorgpa">
+      <strong>Prior GPA Scheme</strong>
+      <table id="gpa1calc" class="table table-hover table-bordered table-condensed gridform">
+        <tbody>
+          <tr class="gridheadspacer" ng-class="theme.table">
+            <th>
+              Quality Points
+            </th>
+            <th>
+              Grade Points
+            </th>
+          </tr>
+          <tr ng-if="courseRows.length===0">
+            <td colspan="8" class="text-center text-muted"><i>Prior points</i></td>
+          </tr>
+          <tr class="num gridpointsheight" ng-repeat="courseRow in courseRows" ng-class="[changeBackgroundColour(courseRow), newCourseRow(courseRow)]">
+            <td ng-class="courseRow.mutePoints">{{courseRow.adjustedQualityPoints}}</td>
+            <td ng-class="courseRow.mutePoints">{{courseRow.adjustedGradePoints}}</td>
+          </tr>
+
+          <tr class="active footerrow">
+            <td>{{oldGpaTotalQualityPoints}}</td>
+            <td>{{oldGpaTotalGradePoints}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-2 table-responsive" id="currentgpa">
+      <strong class="hidden-md">2014/2015 GPA Scheme</strong>
+      <strong class="visible-md">2014/2015 Scheme</strong>
+      <table id="gpa2calc" class="table table-hover table-bordered table-condensed gridform">
+        <tbody>
+          <tr class="gridheadspacer" ng-class="theme.table">
+            <th>
+              Quality Points
+            </th>
+            <th>
+              Grade Points
+            </th>
+          </tr>
+          <tr ng-if="courseRows.length===0">
+            <td colspan="8" class="text-center text-muted"><i>2014/2015 points</i></td>
+          </tr>
+          <tr class="num gridpointsheight" ng-repeat="courseRow in courseRows" ng-class="[changeBackgroundColour(courseRow), newCourseRow(courseRow)]">
+            <td>{{courseRow.adjustedConvertedQP}}</td>
+            <td>{{courseRow.adjustedConvertedGP}}</td>
+          </tr>
+
+          <tr class="active footerrow">
+            <td>{{newGpaTotalQualityPoints}}</td>
+            <td>{{newGpaTotalGradePoints}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4"></div>
+
+    <div class="col-md-8">
+      <div class="row" id="separategpas">
+        <div class="col-md-6">
+          <table class="table table-bordered table-condensed gridform gridsummary">
+            <tbody>
+              <tr class="active">
+                <td>
+                  <strong>Cumulative GPA:</strong>
+                </td>
+              </tr>
+              <tr class="active">
+                <td ng-class="theme.alert">
+                  <strong>GPA Converted to 2014/15 Scheme:</strong>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-3">
+          <table id="gpa1results" class="table table-bordered table-condensed gridform gparesults">
+            <tbody>
+              <tr>
+                <td>
+                  {{oldGpa | number:2}}
+                </td>
+              </tr>
+              <tr>
+                <td ng-class="theme.alert">
+                  {{convertedGpa | number:2}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-3">
+          <table id="gpa2results" class="table table-bordered table-condensed gridform">
+            <tbody>
+              <tr>
+                <td>
+                  {{newGpa | number:2}}
+                </td>
+              </tr>
+              <tr>
+                <td ng-class="theme.alert">
+                  {{newGpa | number:2}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+      <div class="row" id="combinedgpa">
+        <div class="col-md-6">
+          <div class="panel" ng-class="theme.panel">
+            <div class="panel-heading text-right">
+              <h4 class="panel-title">Computation</h4>
+            </div>
+            <table class="table table-bordered table-condensed gridform gridsummary">
+              <tbody>
+                <tr class="active">
+                  <td>
+                    <strong>Combined Cumulative GPA:</strong>
+                  </td>
+                </tr>
+                <tr class="active">
+                  <td>
+                    <strong>Combined Degree GPA:</strong>
+                  </td>
+                </tr>
+                <tr class="active">
+                  <td>
+                    <strong>Class of Degree:</strong>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel" ng-class="theme.panel">
+            <div class="panel-heading text-center">
+              <h4 class="panel-title">Results</h4>
+            </div>
+            <table id="gpa2results" class="table table-bordered table-condensed gridform">
+              <tbody>
+                <tr>
+                  <td>
+                    {{combinedCumulativeGpa | number:2}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {{combinedWeightedGpa | number:2}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {{newGpaDegreeClass}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-group well" id="formulas">
+    <p>Learn how your combined GPAs were calculated below</p>
+    <div class="panel panel-success">
+      <div class="panel-heading formula" ng-click="combinedCumulativeFormulaIsCollapsed = !combinedCumulativeFormulaIsCollapsed">
+        <span class="collapse-sign" ng-if="combinedCumulativeFormulaIsCollapsed">
+          <i class="glyphicon glyphicon-chevron-right"></i>
+        </span>
+        <span class="collapse-sign" ng-if="!combinedCumulativeFormulaIsCollapsed">
+          <i class="glyphicon glyphicon-chevron-down"></i>
+        </span>
+        <h4 class="panel-title formula-title">
+            Combined Cumulative GPA Formula
+        </h4>
+      </div>
+      <div collapse="combinedCumulativeFormulaIsCollapsed" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="text-right">
+                <strong>Combined Cumulative GPA = </strong>
+              </div>
+          </div>
+            <div class="col-md-9">
+              <div class="row text-center">
+                <u>( (Prior Cumulative GPA Hours <strong>x</strong> Prior Cumulative GPA) <strong>+</strong> (Current Cumulative GPA Hours <strong>x</strong> Current Cumulative GPA) )</u>
+              </div>
+              <div class="row text-center">
+                (Prior Cumulative GPA Hours <strong>+</strong> Current Cumulative GPA Hours)
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="text-right">
+                <strong>= </strong>
+              </div>
+          </div>
+            <div class="col-md-9">
+              <div class="row text-center text-danger">
+                <strong>( ({{oldGpaTotalQualityHours | number:2}} <strong>x</strong> {{convertedGpa | number:2}}) <strong>+</strong> ({{newGpaTotalQualityHours | number:2}} <strong>x</strong> {{newGpa | number:2}}) ) / ({{oldGpaTotalQualityHours | number:2}} <strong>+</strong> {{newGpaTotalQualityHours | number:2}}) = {{combinedCumulativeGpa | number:3}} ≈ {{combinedCumulativeGpa | number:2}}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-success">
+      <div class="panel-heading formula" ng-click="combinedDegreeFormulaIsCollapsed = !combinedDegreeFormulaIsCollapsed">
+        <span class="collapse-sign" ng-if="combinedDegreeFormulaIsCollapsed">
+          <i class="glyphicon glyphicon-chevron-right"></i>
+        </span>
+        <span class="collapse-sign" ng-if="!combinedDegreeFormulaIsCollapsed">
+          <i class="glyphicon glyphicon-chevron-down"></i>
+        </span>
+        <h4 class="panel-title formula-title">
+            Combined Degree GPA Formula
+        </h4>
+      </div>
+      <div collapse="combinedDegreeFormulaIsCollapsed" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="text-right">
+                <strong>Combined Degree GPA = </strong>
+              </div>
+          </div>
+            <div class="col-md-9">
+              <div class="row text-center">
+                <u>( (Prior Degree GPA Hours <strong>x</strong> Prior Degree GPA) <strong>+</strong> (Current Degree GPA Hours <strong>x</strong> Current Degree GPA) )</u>
+              </div>
+              <div class="row text-center">
+                (Prior Degree GPA Hours <strong>+</strong> Current Degree GPA Hours)
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="text-right">
+                <strong>= </strong>
+              </div>
+          </div>
+            <div class="col-md-9">
+              <div class="row text-center text-danger">
+                <strong>( ({{oldWeightedGpaTotalQualityHours | number:2}} <strong>x</strong> {{convertedWeightedGpa | number:2}}) <strong>+</strong> ({{newWeightedGpaTotalQualityHours | number:2}} <strong>x</strong> {{newWeightedGpa | number:2}}) ) / ({{oldWeightedGpaTotalQualityHours | number:2}} <strong>+</strong> {{newWeightedGpaTotalQualityHours | number:2}}) = {{combinedWeightedGpa | number:3}} ≈ {{combinedWeightedGpa | number:2}}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- default version end -->

@@ -158,7 +158,7 @@ angular.module('gpaApp')
               if (parseInt(allCourseRows[i].termCode) < 201410) {
                 qualityhoursValue = parseFloat(allCourseRows[i].qualityhoursValue);
                 if (isNaN(qualityhoursValue)) {
-                  console.error(qualityhoursValue);
+                  // console.error(qualityhoursValue);
                   qualityhoursValue = 0;
                 }
                 qualityHoursTotal = new Big(qualityHoursTotal).plus(new Big(qualityhoursValue).times(weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level))));
@@ -168,7 +168,7 @@ angular.module('gpaApp')
               if (parseInt(allCourseRows[i].termCode) >= 201410) {
                 qualityhoursValue = parseFloat(allCourseRows[i].qualityhoursValue);
                 if (isNaN(qualityhoursValue)) {
-                  console.error(qualityhoursValue);
+                  // console.error(qualityhoursValue);
                   qualityhoursValue = 0;
                 }
                 qualityHoursTotal = new Big(qualityHoursTotal).plus(new Big(qualityhoursValue).times(weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level))));
@@ -177,7 +177,7 @@ angular.module('gpaApp')
             else {
               qualityhoursValue = parseFloat(allCourseRows[i].qualityhoursValue);
               if (isNaN(qualityhoursValue)) {
-                console.error(qualityhoursValue);
+                // console.error(qualityhoursValue);
                 qualityhoursValue = 0;
               }
               // qualityHoursTotal + parseFloat(allCourseRows[i].qualityhoursValue * weights.weightValue(campuses.thisCampus(), faculties.thisFaculty(), levels.levelValue(allCourseRows[i].level)))

@@ -112,7 +112,7 @@ angular.module('gpaApp')
         }
         // console.debug(modalRows[i].course+','+modalRows[i].term+','+modalRows[i].level+','+modalRows[i].grade+','+modalRows[i].qualityhoursValue);
       }
-      console.debug(sanitize);
+      // console.debug(sanitize);
       return count;
     }
 

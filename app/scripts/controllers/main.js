@@ -180,7 +180,7 @@ angular.module('gpaApp')
       })
       .then(function () {
         var studentURI;
-        console.debug($location.$$search.id);
+        // console.debug($location.$$search.id);
         if (typeof $location.$$search.id === 'undefined') {
           studentURI = config.studentProgrammeRecordURI;
         }
@@ -235,7 +235,7 @@ angular.module('gpaApp')
       $scope.grades             = grades.collection();
       $scope.qualityhoursValues = qualityhoursValues.collection();
     }, function (error) {
-      console.debug('config request failed: ' + error);
+      console.error('config request failed: ' + error);
       $scope.campus = campuses.defaultCampus('default');
       updateSelectedCampus();
       campuses.dynamicTheme(true);
@@ -299,7 +299,7 @@ angular.module('gpaApp')
     };
 
     $scope.includeCourse = function (courseRow) {
-      console.debug(courseRow);
+      // console.debug(courseRow);
       updateGpaScopes();
     };
 
@@ -327,7 +327,7 @@ angular.module('gpaApp')
 
       modalInstance.result
       .then(function (newCourseRows) {
-        console.debug(newCourseRows);
+        // console.debug(newCourseRows);
         for (var i = 0; i < newCourseRows.length; i++) {
           courseRows.addRow(newCourseRows[i].term, newCourseRows[i].course, newCourseRows[i].courseType, newCourseRows[i].level, newCourseRows[i].grade, newCourseRows[i].qualityhoursValue);
         }

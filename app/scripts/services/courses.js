@@ -15,7 +15,7 @@ angular.module('gpaApp')
       CampusCoursesResource = $resource(coursesURI, {});
       campusCoursesResource = CampusCoursesResource.get({},
       function(response) {
-        console.log(response);
+        // console.log(response);
         if (coursesScope.length !== 0) {
           return null;
         }

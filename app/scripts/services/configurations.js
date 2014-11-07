@@ -12,7 +12,7 @@ angular.module('gpaApp')
       ConfigResource = $resource('config.json', {});
       configResource = ConfigResource.get({},
       function(response) {
-        console.dir(response);
+        // console.dir(response);
       }, function(error){
         console.error(error);
       });

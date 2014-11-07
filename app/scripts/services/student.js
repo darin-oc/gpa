@@ -17,7 +17,7 @@ angular.module('gpaApp')
       ProgrammeRecordResource = $resource(studentProgrammeRecordURI, {});
       programmeRecordResource = ProgrammeRecordResource.get({},
       function(response) {
-        console.log(response);
+        // console.log(response);
       }, function (error){
         console.log('request failed: ' + error);
       });
