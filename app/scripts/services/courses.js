@@ -38,7 +38,7 @@ angular.module('gpaApp')
       },
       courseLevel: function (coursesNumber) {
         var level;
-        level = (parseInt(coursesNumber) / 1000).toFixed();
+        level = new Big(coursesNumber).div(1000).round(0, 0).toFixed();
         if ((level < 1) || (level === null) || (typeof level === 'undefined')) {
           level = 1;
         }
